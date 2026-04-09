@@ -4,27 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Convite Aliane & Luis Felipe</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
     <style>
-        /* RESET PARA TELA CHEIA */
+        /* Reset para ocupar a tela toda sem sobras */
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
         
         body, html { 
             width: 100%; 
             height: 100%; 
-            overflow: hidden; 
+            overflow: hidden; /* Evita que a tela balance enquanto o convite abre */
             background-color: #fdfbf8;
         }
 
+        /* CONTAINER PRINCIPAL (TELA DO CELULAR COMPLETA) */
         .invite-wrapper { 
             width: 100vw; 
             height: 100vh; 
             position: relative; 
             perspective: 2000px; 
             overflow: hidden;
+            /* box-shadow: Removi a sombra porque ela não aparece em tela cheia */
         }
 
-        /* --- CAPA (ENVELOPE FECHADO) --- */
+        /* --- 1ª PARTE: CAPA (ENVELOPE FECHADO) --- */
         .envelope-left, .envelope-right { 
             position: absolute; 
             top: 0; 
@@ -32,19 +33,18 @@
             height: 100vh; 
             background: #f4f1ee; 
             z-index: 10; 
-            transition: transform 2.2s cubic-bezier(0.4, 0, 0.2, 1); 
+            transition: transform 2s cubic-bezier(0.4, 0, 0.2, 1); 
         }
         .envelope-left { left: 0; transform-origin: left; border-right: 1px solid rgba(0,0,0,0.03); }
         .envelope-right { right: 0; transform-origin: right; }
         
-        /* BOTÃO CENTRAL */
         .selo-container {
             position: absolute; 
             left: 50%; 
-            top: 50%; 
+            top: 45%; 
             transform: translate(-50%, -50%);
-            width: 220px; 
-            height: 220px; 
+            width: 250px; 
+            height: 250px; 
             z-index: 20; 
             cursor: pointer; 
             display: flex; 
@@ -52,25 +52,14 @@
             align-items: center;
         }
 
+        /* IMAGEM 1: O BOTÃO/SELO */
         .img-selo { 
-            width: 150px; /* Tamanho do seu lacre AF */
+            width: 100%; 
             height: auto; 
-            z-index: 21;
+            transition: opacity 0.5s; 
         }
 
-        /* TEXTO CIRCULAR "CLIQUE PARA ABRIR" */
-        .circular-text {
-            position: absolute; 
-            width: 210px; 
-            height: 210px; 
-            z-index: 22;
-            pointer-events: none;
-            animation: rotateText 10s linear infinite;
-        }
-
-        @keyframes rotateText { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
-        /* --- INTERIOR (ROLAGEM) --- */
+        /* --- INTERIOR (ROLAGEM COMPLETA) --- */
         .card-scroll { 
             width: 100vw; 
             height: 100vh; 
@@ -82,10 +71,23 @@
             -webkit-overflow-scrolling: touch;
         }
 
-        .img-parte-nomes { width: 100%; height: auto; display: block; }
+        /* IMAGEM 2: PARTE DOS NOMES (ESCALA 100%) */
+        .img-parte-nomes { 
+            width: 100%; 
+            height: auto; 
+            display: block; 
+        }
 
-        .secao-botoes { position: relative; width: 100%; }
-        .img-parte-botoes { width: 100%; height: auto; display: block; }
+        /* IMAGEM 3: PARTE DOS BOTÕES (FUNDO EXCALA 100%) */
+        .secao-botoes { 
+            position: relative; 
+            width: 100%; 
+        }
+        .img-parte-botoes { 
+            width: 100%; 
+            height: auto; 
+            display: block; 
+        }
 
         /* ÁREAS DE CLIQUE SOBRE A IMAGEM 3 */
         .grid-links {
@@ -105,12 +107,12 @@
             align-items: center; 
             justify-content: center;
             text-decoration: none; 
-            color: transparent;
+            color: transparent; /* Invisível para mostrar sua foto embaixo */
         }
 
-        /* ANIMAÇÃO DE ABERTURA */
-        .invite-wrapper.open .envelope-left { transform: rotateY(-150deg); }
-        .invite-wrapper.open .envelope-right { transform: rotateY(150deg); }
+        /* ESTADO ABERTO */
+        .invite-wrapper.open .envelope-left { transform: rotateY(-130deg); }
+        .invite-wrapper.open .envelope-right { transform: rotateY(130deg); }
         .invite-wrapper.open .selo-container { opacity: 0; visibility: hidden; pointer-events: none; }
 
     </style>
@@ -122,12 +124,6 @@
         <div class="envelope-right"></div>
         
         <div class="selo-container" onclick="abrirConvite()">
-            <svg class="circular-text" viewBox="0 0 100 100">
-                <path id="curve" d="M 50,50 m -35,0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="none" />
-                <text font-family="Montserrat" font-size="4.5" fill="#b88a44" letter-spacing="1">
-                    <textPath xlink:href="#curve">CLIQUE PARA ABRIR • CLIQUE PARA ABRIR • </textPath>
-                </text>
-            </svg>
             <img src="https://i.postimg.cc/Qd3kmXzq/IMG-1267.jpg" class="img-selo">
         </div>
 
@@ -146,6 +142,7 @@
                     <a href="LINK_NOIVO" class="link-invisivel">Noivo</a>
                 </div>
             </div>
+
         </div>
     </div>
 
