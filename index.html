@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Convite Aliane & Luis Felipe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Playfair+Display:ital,wght@0,400;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { margin: 0; background-color: #d1d1d1; font-family: 'Playfair Display', serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow: hidden; }
+
+        .invite-wrapper { 
+            width: 100%; max-width: 400px; height: 94vh; position: relative; perspective: 2000px; 
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3); background: #fdfbf8; overflow: hidden;
+        }
+
+        /* --- CAPA (O ENVELOPE) --- */
+        .envelope-left, .envelope-right { 
+            position: absolute; top: 0; width: 50%; height: 100%; background: #f4f1ee; 
+            z-index: 10; transition: transform 2s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+        .envelope-left { left: 0; transform-origin: left; border-right: 1px solid rgba(0,0,0,0.05); }
+        .envelope-right { right: 0; transform-origin: right; }
+        
+        /* IMAGEM DO RAMINHO DA CAPA (MANUAL) */
+        .img-ramo-capa {
+            position: absolute; left: 50%; top: 43%; transform: translate(-50%, -65%);
+            width: 280px; z-index: 15; pointer-events: none;
+        }
+
+        /* CONTAINER DO SELO E TEXTO CURVADO */
+        .selo-container {
+            position: absolute; left: 50%; top: 45%; transform: translate(-50%, -50%);
+            width: 180px; height: 180px; z-index: 20; cursor: pointer;
+        }
+
+        /* IMAGEM DO SELO "AF" (MANUAL) */
+        .img-selo {
+            position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+            width: 90px; height: 90px; border-radius: 50%; z-index: 21;
+        }
+
+        /* TEXTO CURVADO (Mantive em código para ser nítido, mas ele contorna a imagem) */
+        .circular-text {
+            position: absolute; width: 160px; height: 160px; left: 10px; top: 10px;
+            pointer-events: none; z-index: 22;
+        }
+
+        /* --- INTERIOR --- */
+        .card-content { 
+            width: 100%; height: 100%; background-color: #fdfbf8; padding: 40px 20px; 
+            text-align: center; overflow-y: auto; color: #5d6343; display: flex; flex-direction: column; align-items: center;
+            position: relative;
+        }
+
+        /* IMAGEM DO RAMINHO DE FUNDO INTERNO (MANUAL) */
+        .img-ramo-fundo {
+            position: absolute; top: 5%; left: 0; width: 100%; opacity: 0.15; z-index: 0; pointer-events: none;
+        }
+
+        .versiculo { font-size: 0.85rem; font-style: italic; margin-bottom: 25px; line-height: 1.5; z-index: 1; position: relative; }
+        .bencao { font-family: 'Montserrat', sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; z-index: 1; }
+        .nomes { font-family: 'Dancing Script', cursive; font-size: 3.2rem; color: #8e6d45; margin: 15px 0; z-index: 1; line-height: 1.1; }
+        .info-casamento { font-size: 0.9rem; line-height: 1.8; margin-bottom: 30px; z-index: 1; color: #333; }
+
+        /* GRADE DE 6 BOTÕES */
+        .grid-botoes { 
+            display: grid; grid-template-columns: 1fr 1fr; gap: 20px 10px; 
+            width: 100%; margin-top: 10px; padding-bottom: 40px; z-index: 1;
+        }
+
+        .btn-interativo { 
+            text-decoration: none; color: #5d6343; display: flex; flex-direction: column; 
+            align-items: center; font-size: 0.65rem; font-weight: bold; text-transform: uppercase;
+            letter-spacing: 1px; font-family: 'Montserrat', sans-serif;
+        }
+
+        .icon-circle { 
+            width: 55px; height: 55px; background-color: #7a8258; border-radius: 50%; 
+            display: flex; justify-content: center; align-items: center; margin-bottom: 8px; 
+            box-shadow: 0 4px 10px rgba(122, 130, 88, 0.3); 
+        }
+
+        .icon-circle svg { width: 25px; height: 25px; fill: white; }
+
+        /* ESTADO ABERTO */
+        .invite-wrapper.open .envelope-left { transform: rotateY(-130deg); }
+        .invite-wrapper.open .envelope-right { transform: rotateY(130deg); }
+        .invite-wrapper.open .selo-container, .invite-wrapper.open .img-ramo-capa { 
+            opacity: 0; visibility: hidden; transition: 0.5s; 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="invite-wrapper" id="convite">
+        <div class="envelope-left"></div>
+        <div class="envelope-right"></div>
+        
+        <img src="https://i.postimg.cc/Qd3kmXzq/IMG-1267.jpg" class="img-ramo-capa" alt="Flores">
+
+        <div class="selo-container" onclick="abrirConvite()">
+            <svg class="circular-text" viewBox="0 0 100 100">
+                <path id="curve" d="M 20,50 A 30,30 0 0,1 80,50" fill="none" />
+                <text font-family="Montserrat" font-size="5" fill="#b88a44" letter-spacing="1">
+                    <textPath xlink:href="#curve" startOffset="5%">CLIQUE PARA ABRIR • CLIQUE PARA ABRIR</textPath>
+                </text>
+            </svg>
+            
+            <img src="LINK_DA_IMAGEM_DO_SELO_AF" class="img-selo" alt="Selo">
+        </div>
+
+        <div class="card-content">
+            <img src="https://i.postimg.cc/3RdgNWyM/IMG-1268.jpg" class="img-ramo-fundo">
+
+            <p class="versiculo">"Nós amamos porque Ele nos amou primeiro."<br>João 4:19</p>
+            <p class="bencao">Com a bênção de Deus e de seus pais</p>
+            <p style="font-family: 'Montserrat', sans-serif; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;">Convidam para o casamento de</p>
+            
+            <h1 class="nomes">Aliane &<br>Luis Felipe</h1>
+            
+            <div class="info-casamento">
+                que se realizará no dia<br>
+                <b>26 de Junho de 2026 às 19:30h</b><br>
+                no Buffet Pacheco's
+            </div>
+
+            <div class="grid-botoes">
+                <a href="LINK_WHATSAPP_CONFIRMACAO" class="btn-interativo">
+                    <div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+                    Confirmar presença
+                </a>
+                <a href="LINK_MAPS" class="btn-interativo">
+                    <div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+                    Localização
+                </a>
+                <a href="LINK_LISTA_PRESENTE" class="btn-interativo">
+                    <div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.65-.5-.65C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-5-2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM9 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm11 15H4v-2h16v2zm0-5H4V8h5.08L7 10.83 8.41 12.25 12 8.66l3.59 3.59L17 10.83 14.92 8H20v6z"/></svg></div>
+                    Lista de presentes
+                </a>
+                <a href="LINK_WHATSAPP_RECADOS" class="btn-interativo">
+                    <div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></div>
+                    Recado aos noivos
+                </a>
+                <a href="LINK_WHATSAPP_NOIVA" class="btn-interativo">
+                    <div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
+                    Fale com a noiva
+                </a>
+                <a href="LINK_WHATSAPP_NOIVO" class="btn-interativo">
+                    <div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>
+                    Fale com o noivo
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function abrirConvite() {
+            document.getElementById('convite').classList.add('open');
+        }
+    </script>
+</body>
+</html>
