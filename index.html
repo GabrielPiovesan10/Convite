@@ -2,10 +2,10 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Convite Aliane & Luis Felipe</title>
     <style>
-        /* RESET ABSOLUTO - Não deixa sobrar nenhum pixel */
+        /* RESET ABSOLUTO - Mata qualquer respiro ou margem */
         * { 
             margin: 0 !important; 
             padding: 0 !important; 
@@ -17,20 +17,19 @@
             width: 100%; 
             height: 100%; 
             overflow: hidden; 
-            background-color: #fdfbf8; /* Cor de fundo caso algo falhe */
+            background-color: #fdfbf8;
         }
 
-        /* CONTAINER PRINCIPAL - AGORA SEM LIMITES */
+        /* CONTAINER EM TELA CHEIA */
         .invite-wrapper { 
             width: 100vw; 
             height: 100vh; 
             position: relative; 
             perspective: 2000px; 
             overflow: hidden;
-            display: block; /* Removi o flex para ele não centralizar e "encolher" */
         }
 
-        /* --- ENVELOPE (PORTAS) --- */
+        /* --- CAPA (O ENVELOPE) --- */
         .envelope-left, .envelope-right { 
             position: absolute; 
             top: 0; 
@@ -43,19 +42,25 @@
         .envelope-left { left: 0; transform-origin: left; }
         .envelope-right { right: 0; transform-origin: right; }
         
-        /* BOTÃO DO SELO - GIGANTE NO MEIO */
+        /* BOTÃO DO SELO - GIGANTE NO CENTRO */
         .selo-container {
             position: absolute; 
             left: 50%; 
             top: 50%; 
             transform: translate(-50%, -50%);
-            width: 320px; /* Aumentei bem o tamanho do botão */
+            width: 350px; /* Aumentei para 350px para ocupar bem a tela */
             z-index: 20; 
             cursor: pointer;
+            display: flex;
+            justify-content: center;
         }
-        .img-selo { width: 100%; height: auto; display: block; }
+        .img-selo { 
+            width: 120%; /* Super zoom no selo para matar bordas do arquivo */
+            height: auto; 
+            display: block; 
+        }
 
-        /* --- INTERIOR (ROLAGEM TOTAL) --- */
+        /* --- INTERIOR (PÁGINA DE ROLAGEM) --- */
         .card-scroll { 
             width: 100vw; 
             height: 100vh; 
@@ -67,22 +72,31 @@
             -webkit-overflow-scrolling: touch;
         }
 
-        /* AS IMAGENS DO CONVITE - FORÇANDO A TELA CHEIA */
-        .img-convite {
-            /* O PULO DO GATO: 102vw faz ela "vazar" um pouquinho para sumir bordas */
-            width: 102vw !important; 
-            margin-left: -1vw !important; /* Centraliza o vazamento */
+        /* CONTAINER DE ZOOM PARA AS IMAGENS INTERNAS */
+        .zoom-box {
+            width: 100vw;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .img-full-zoom {
+            /* 115vw força a imagem a ser 15% maior que a tela, sumindo com as bordas */
+            width: 115vw !important; 
+            min-width: 115vw !important;
             height: auto;
             display: block;
-            min-width: 100vw;
+            flex-shrink: 0;
         }
 
         .secao-botoes { 
             position: relative; 
             width: 100vw; 
+            overflow: hidden;
         }
 
-        /* ÁREAS DE CLIQUE INVISÍVEIS */
+        /* GRID DE LINKS (ÁREAS DE CLIQUE SOBRE A IMAGEM 3) */
         .grid-links {
             position: absolute; 
             top: 0; 
@@ -96,7 +110,7 @@
         }
         .link-invisivel { text-decoration: none; color: transparent; }
 
-        /* ANIMAÇÃO DE ABERTURA */
+        /* ABERTURA */
         .invite-wrapper.open .envelope-left { transform: rotateY(-160deg); }
         .invite-wrapper.open .envelope-right { transform: rotateY(160deg); }
         .invite-wrapper.open .selo-container { opacity: 0; visibility: hidden; pointer-events: none; }
@@ -115,10 +129,14 @@
 
         <div class="card-scroll">
             
-            <img src="https://i.postimg.cc/3RdgNWyM/IMG-1268.jpg" class="img-convite">
+            <div class="zoom-box">
+                <img src="https://i.postimg.cc/3RdgNWyM/IMG-1268.jpg" class="img-full-zoom">
+            </div>
 
             <div class="secao-botoes">
-                <img src="https://i.postimg.cc/4xPt1ptW/IMG-1269.jpg" class="img-convite">
+                <div class="zoom-box">
+                    <img src="https://i.postimg.cc/4xPt1ptW/IMG-1269.jpg" class="img-full-zoom">
+                </div>
 
                 <div class="grid-links">
                     <a href="LINK_CONFIRMACAO" class="link-invisivel"></a>
