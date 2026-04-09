@@ -5,17 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Convite Aliane & Luis Felipe</title>
     <style>
-        /* RESET TOTAL - Zero margens e preenchimento */
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        /* RESET TOTAL - Mata qualquer margem ou espaço branco */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            -webkit-tap-highlight-color: transparent; 
+        }
         
         html, body { 
             width: 100%; 
             height: 100%; 
             overflow: hidden; 
-            background-color: #fdfbf8; /* Cor de fundo do papel */
+            background-color: #fdfbf8; /* Cor do fundo do seu convite */
         }
 
-        /* CONTAINER QUE COLA NAS BORDAS DO CELULAR */
+        /* CONTAINER PRINCIPAL - OCUPA CADA PIXEL DA TELA */
         .invite-wrapper { 
             width: 100vw; 
             height: 100vh; 
@@ -24,49 +29,76 @@
             overflow: hidden;
         }
 
-        /* --- ENVELOPE (AS PORTAS) --- */
+        /* --- CAPA (O ENVELOPE QUE ABRE) --- */
         .envelope-left, .envelope-right { 
-            position: absolute; top: 0; width: 50.5vw; height: 100vh; 
-            background: #f4f1ee; z-index: 10; 
-            transition: transform 2s cubic-bezier(0.4, 0, 0.2, 1); 
+            position: absolute; 
+            top: 0; 
+            width: 50.5vw; /* 50.5 para não ter fresta no meio */
+            height: 100vh; 
+            background: #f4f1ee; /* Cor do papel das portas */
+            z-index: 10; 
+            transition: transform 2.2s cubic-bezier(0.4, 0, 0.2, 1); 
         }
-        .envelope-left { left: 0; transform-origin: left; border-right: 1px solid rgba(0,0,0,0.05); }
+        .envelope-left { left: 0; transform-origin: left; border-right: 1px solid rgba(0,0,0,0.02); }
         .envelope-right { right: 0; transform-origin: right; }
         
-        /* BOTÃO DO SELO - CENTRALIZADO */
+        /* BOTÃO DO SELO - CENTRALIZADO E PROPORCIONAL */
         .selo-container {
-            position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-            width: 70vw; max-width: 280px; z-index: 20; cursor: pointer;
+            position: absolute; 
+            left: 50%; 
+            top: 50%; 
+            transform: translate(-50%, -50%);
+            width: 70vw; /* Ocupa 70% da largura do celular */
+            max-width: 300px; /* Limite para não ficar gigante em tablets */
+            z-index: 20; 
+            cursor: pointer; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
         }
         .img-selo { width: 100%; height: auto; display: block; }
 
-        /* --- INTERIOR (CONTEÚDO ROLÁVEL) --- */
+        /* --- INTERIOR (PÁGINA DE ROLAGEM) --- */
         .card-scroll { 
-            width: 100vw; height: 100vh; overflow-y: auto; overflow-x: hidden;
-            display: flex; flex-direction: column; z-index: 5;
+            width: 100vw; 
+            height: 100vh; 
+            overflow-y: auto; 
+            overflow-x: hidden;
+            display: flex; 
+            flex-direction: column; 
+            z-index: 5;
             -webkit-overflow-scrolling: touch;
         }
 
-        /* IMAGENS DO CONVITE - 100% DA LARGURA DA TELA */
+        /* IMAGENS DO CONVITE - 100% DA LARGURA SEM SOBRAS */
         .img-full {
             width: 100%;
             height: auto;
             display: block;
         }
 
-        .secao-botoes { position: relative; width: 100%; }
+        .secao-botoes { 
+            position: relative; 
+            width: 100%; 
+        }
 
-        /* GRID DE LINKS (ÁREAS DE CLIQUE) */
+        /* GRID DE LINKS (ÁREAS DE CLIQUE SOBRE A IMAGEM DE BAIXO) */
         .grid-links {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr 1fr;
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%;
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            grid-template-rows: 1fr 1fr 1fr;
             z-index: 30;
         }
         .link-invisivel { text-decoration: none; color: transparent; }
 
         /* ANIMAÇÃO DE ABERTURA */
-        .invite-wrapper.open .envelope-left { transform: rotateY(-140deg); }
-        .invite-wrapper.open .envelope-right { transform: rotateY(140deg); }
+        .invite-wrapper.open .envelope-left { transform: rotateY(-150deg); }
+        .invite-wrapper.open .envelope-right { transform: rotateY(150deg); }
         .invite-wrapper.open .selo-container { opacity: 0; visibility: hidden; pointer-events: none; }
 
     </style>
@@ -86,15 +118,15 @@
             <img src="nomes.jpg" class="img-full">
 
             <div class="secao-botoes">
-                <img src="links.jpg" class="img-full">
+                <img src="botoes.jpg" class="img-full">
 
                 <div class="grid-links">
-                    <a href="LINK_CONFIRMACAO" class="link-invisivel"></a>
-                    <a href="LINK_MAPS" class="link-invisivel"></a>
-                    <a href="LINK_PRESENTES" class="link-invisivel"></a>
-                    <a href="LINK_RECADOS" class="link-invisivel"></a>
-                    <a href="LINK_NOIVA" class="link-invisivel"></a>
-                    <a href="LINK_NOIVO" class="link-invisivel"></a>
+                    <a href="https://wa.me/SEU_NUMERO" class="link-invisivel">Confirmar</a>
+                    <a href="LINK_MAPS" class="link-invisivel">Localização</a>
+                    <a href="LINK_PRESENTE" class="link-invisivel">Presentes</a>
+                    <a href="LINK_RECADOS" class="link-invisivel">Recados</a>
+                    <a href="LINK_NOIVA" class="link-invisivel">Noiva</a>
+                    <a href="LINK_NOIVO" class="link-invisivel">Noivo</a>
                 </div>
             </div>
 
