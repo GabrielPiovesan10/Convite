@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Convite Aliane & Luis Felipe</title>
     <style>
-        /* RESET ABSOLUTO */
+        /* RESET TOTAL - Mata qualquer margem ou respiro do navegador */
         * { 
             margin: 0 !important; 
             padding: 0 !important; 
@@ -13,54 +13,59 @@
             -webkit-tap-highlight-color: transparent;
         }
         
-        /* O segredo para o Full Screen no celular */
         html, body { 
             width: 100%; 
             height: 100%; 
-            height: -webkit-fill-available;
+            height: 100dvh; /* Altura dinâmica para mobile */
             overflow: hidden; 
-            background-color: #f4f1ee; /* Cor das portas do envelope */
+            background-color: #f4f1ee; /* Cor idêntica ao envelope para sumir com as bordas */
         }
 
+        /* CONTAINER PRINCIPAL - AGORA EM TELA CHEIA REAL */
         .invite-wrapper { 
             width: 100vw; 
-            height: 100dvh; /* Altura dinâmica para mobile */
-            position: fixed; /* Fixa na tela para não ter erro de scroll */
+            height: 100dvh; 
+            position: fixed; 
             top: 0;
             left: 0;
             perspective: 2000px; 
             overflow: hidden;
+            touch-action: none; /* Trava a tela para não "sambgar" enquanto fechado */
         }
 
-        /* --- AS PORTAS DO ENVELOPE (TELA INICIAL) --- */
+        /* --- AS PORTAS DO ENVELOPE (TELA CHEIA) --- */
         .envelope-left, .envelope-right { 
             position: absolute; 
             top: 0; 
-            width: 50.5%; /* Garante o encontro no meio */
+            width: 50.5vw; /* 50.5 para garantir que se encontrem no meio sem risco */
             height: 100%; 
-            background: #f4f1ee; 
+            background: #f4f1ee; /* Mesma cor do seu convite */
             z-index: 10; 
             transition: transform 2.2s cubic-bezier(0.4, 0, 0.2, 1); 
         }
-        .envelope-left { left: 0; transform-origin: left; border-right: 1px solid rgba(0,0,0,0.05); }
+        .envelope-left { left: 0; transform-origin: left; border-right: 1px solid rgba(0,0,0,0.03); }
         .envelope-right { right: 0; transform-origin: right; }
         
-        /* O BOTÃO (SELO) */
+        /* BOTÃO DO SELO - CENTRALIZADO E GRANDE */
         .selo-container {
             position: absolute; 
             left: 50%; 
             top: 50%; 
             transform: translate(-50%, -50%);
-            width: 80vw;
-            max-width: 300px;
+            width: 85vw; /* Ocupa boa parte da largura da tela */
+            max-width: 320px; 
             z-index: 20; 
             cursor: pointer;
             display: flex;
             justify-content: center;
         }
-        .img-selo { width: 100%; height: auto; display: block; }
+        .img-selo { 
+            width: 100%; 
+            height: auto; 
+            display: block;
+        }
 
-        /* --- INTERIOR --- */
+        /* --- INTERIOR (LIBERA ROLAGEM SÓ AO ABRIR) --- */
         .card-scroll { 
             width: 100vw; 
             height: 100%; 
@@ -71,6 +76,7 @@
             z-index: 5;
             -webkit-overflow-scrolling: touch;
             background-color: #fdfbf8;
+            visibility: hidden; /* Escondido até o clique */
         }
 
         .img-full {
@@ -81,6 +87,7 @@
 
         .secao-botoes { position: relative; width: 100%; }
 
+        /* GRID DE LINKS (ÁREAS DE CLIQUE) */
         .grid-links {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr 1fr;
@@ -88,10 +95,13 @@
         }
         .link-invisivel { text-decoration: none; color: transparent; }
 
-        /* ABERTURA */
+        /* ESTADO ABERTO */
+        .invite-wrapper.open { touch-action: auto; }
+        .invite-wrapper.open .card-scroll { visibility: visible; }
         .invite-wrapper.open .envelope-left { transform: rotateY(-155deg); }
         .invite-wrapper.open .envelope-right { transform: rotateY(155deg); }
         .invite-wrapper.open .selo-container { opacity: 0; visibility: hidden; pointer-events: none; }
+
     </style>
 </head>
 <body>
@@ -104,15 +114,15 @@
             <img src="lacre.jpg" class="img-selo">
         </div>
 
-        <div class="card-scroll">
+        <div class="card-scroll" id="scroll-area">
             <img src="nomes.jpg" class="img-full">
             <div class="secao-botoes">
                 <img src="links.jpg" class="img-full">
                 <div class="grid-links">
-                    <a href="LINK_WHATSAPP_CONFIRMAR" class="link-invisivel"></a>
+                    <a href="LINK_SEU_WHATSAPP" class="link-invisivel"></a>
                     <a href="LINK_MAPS" class="link-invisivel"></a>
-                    <a href="LINK_PRESENTES" class="link-invisivel"></a>
-                    <a href="LINK_RECADOS" class="link-invisivel"></a>
+                    <a href="LINK_LISTA_PRESENTES" class="link-invisivel"></a>
+                    <a href="LINK_MURAL_RECADOS" class="link-invisivel"></a>
                     <a href="LINK_NOIVA" class="link-invisivel"></a>
                     <a href="LINK_NOIVO" class="link-invisivel"></a>
                 </div>
@@ -123,6 +133,10 @@
     <script>
         function abrirConvite() {
             document.getElementById('convite').classList.add('open');
+            // Libera a rolagem depois de meio segundo (quando as portas abrirem um pouco)
+            setTimeout(() => {
+                document.getElementById('scroll-area').style.overflowY = 'auto';
+            }, 500);
         }
     </script>
 </body>
