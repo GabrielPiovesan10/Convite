@@ -3,22 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <meta property="og:title" content="Convite de Casamento: Aliane & Luis Felipe">
+    <meta property="og:description" content="Preparamos algo especial para você. Clique para abrir nosso convite!">
+    <meta property="og:image" content="https://SEU_LINK_DO_GITHUB.github.io/REPOSITORIO/thumb.jpg">
+    <meta property="og:url" content="https://SEU_LINK_DO_GITHUB.github.io/REPOSITORIO/">
+    <meta property="og:type" content="website">
+
     <title>Convite Aliane & Luis Felipe</title>
+    
     <style>
-        /* TUDO O QUE JÁ ESTAVA NO SEU CÓDIGO (ESTILOS) */
-        * { margin: 0 !important; padding: 0 !important; box-sizing: border-box !important; -webkit-tap-highlight-color: transparent; }
-        html, body { width: 100%; height: 100%; height: 100dvh; overflow: hidden; background-color: #f4f1ee; }
-        .invite-wrapper { width: 100vw; height: 100dvh; position: fixed; top: 0; left: 0; perspective: 2000px; overflow: hidden; touch-action: none; }
-        .envelope-left, .envelope-right { position: absolute; top: 0; width: 51vw; height: 100%; background: #f4f1ee; z-index: 10; transition: transform 2.2s cubic-bezier(0.4, 0, 0.2, 1); }
+        /* RESET TOTAL - Mata qualquer margem ou respiro do navegador */
+        * { 
+            margin: 0 !important; 
+            padding: 0 !important; 
+            box-sizing: border-box !important;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        html, body { 
+            width: 100%; 
+            height: 100%; 
+            height: 100dvh; 
+            overflow: hidden; 
+            background-color: #f4f1ee; 
+        }
+
+        /* CONTAINER PRINCIPAL - PREGADO NA TELA */
+        .invite-wrapper { 
+            width: 100vw; 
+            height: 100dvh; 
+            position: fixed; 
+            top: 0;
+            left: 0;
+            perspective: 2000px; 
+            overflow: hidden;
+            touch-action: none; /* Trava o "balancinho" da tela inicial */
+        }
+
+        /* --- ENVELOPE (PORTAS QUE COBREM TUDO) --- */
+        .envelope-left, .envelope-right { 
+            position: absolute; 
+            top: 0; 
+            width: 51vw; 
+            height: 100%; 
+            background: #f4f1ee; 
+            z-index: 10; 
+            transition: transform 2.2s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
         .envelope-left { left: 0; transform-origin: left; }
         .envelope-right { right: 0; transform-origin: right; }
-        .selo-container { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) scale(1.1); width: 100vw; z-index: 20; cursor: pointer; display: flex; justify-content: center; align-items: center; }
-        .img-selo { width: 100%; height: auto; display: block; }
-        .card-scroll { width: 100vw; height: 100%; overflow-y: auto; overflow-x: hidden; display: flex; flex-direction: column; z-index: 5; -webkit-overflow-scrolling: touch; background-color: #fdfbf8; visibility: hidden; }
-        .img-full { width: 100% !important; height: auto !important; display: block !important; }
+        
+        /* CONTAINER DO SELO - GIGANTE E CENTRALIZADO */
+        .selo-container {
+            position: absolute; 
+            left: 50%; 
+            top: 50%; 
+            transform: translate(-50%, -50%) scale(1.1); 
+            width: 100vw; 
+            z-index: 20; 
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .img-selo { 
+            width: 100%; 
+            height: auto; 
+            display: block;
+        }
+
+        /* --- INTERIOR (PÁGINA DE ROLAGEM) --- */
+        .card-scroll { 
+            width: 100vw; 
+            height: 100%; 
+            overflow-y: auto; 
+            overflow-x: hidden;
+            display: flex; 
+            flex-direction: column; 
+            z-index: 5;
+            -webkit-overflow-scrolling: touch;
+            background-color: #fdfbf8;
+            visibility: hidden;
+        }
+
+        .img-full {
+            width: 100% !important;
+            height: auto !important;
+            display: block !important;
+        }
+
         .secao-botoes { position: relative; width: 100%; }
-        .grid-links { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr 1fr; z-index: 30; }
+
+        /* GRID DE LINKS (ÁREAS DE CLIQUE) */
+        .grid-links {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr 1fr;
+            z-index: 30;
+        }
         .link-invisivel { text-decoration: none; color: transparent; }
+
+        /* ESTADO ABERTO */
         .invite-wrapper.open { touch-action: auto; }
         .invite-wrapper.open .card-scroll { visibility: visible; }
         .invite-wrapper.open .envelope-left { transform: rotateY(-155deg); }
@@ -45,12 +131,12 @@
             <div class="secao-botoes">
                 <img src="links.jpg" class="img-full">
                 <div class="grid-links">
-                    <a href="URL_CONFIRMAR" class="link-invisivel"></a>
-                    <a href="URL_LOCALIZACAO" class="link-invisivel"></a>
-                    <a href="URL_PRESENTES" class="link-invisivel"></a>
-                    <a href="URL_RECADOS" class="link-invisivel"></a>
-                    <a href="URL_NOIVA" class="link-invisivel"></a>
-                    <a href="URL_NOIVO" class="link-invisivel"></a>
+                    <a href="LINK_DO_SEU_WHATSAPP" class="link-invisivel"></a>
+                    <a href="LINK_DO_MAPS" class="link-invisivel"></a>
+                    <a href="LINK_DOS_PRESENTES" class="link-invisivel"></a>
+                    <a href="LINK_DOS_RECADOS" class="link-invisivel"></a>
+                    <a href="LINK_INSTA_NOIVA" class="link-invisivel"></a>
+                    <a href="LINK_INSTA_NOIVO" class="link-invisivel"></a>
                 </div>
             </div>
         </div>
@@ -58,16 +144,14 @@
 
     <script>
         function abrirConvite() {
-            // 1. Inicia a animação de abertura
+            // 1. Toca a música (Gatilho obrigatório por clique)
+            var audio = document.getElementById('musicaConvite');
+            audio.play().catch(function(e) { console.log("Erro som:", e); });
+
+            // 2. Inicia a animação de abertura
             document.getElementById('convite').classList.add('open');
             
-            // 2. Toca a música assim que o convidado clica no lacre
-            var audio = document.getElementById('musicaConvite');
-            audio.play().catch(function(error) {
-                console.log("Erro ao tocar música: ", error);
-            });
-
-            // 3. Libera a rolagem do convite
+            // 3. Libera a rolagem depois de meio segundo
             setTimeout(() => {
                 document.getElementById('scroll-area').style.overflowY = 'auto';
             }, 500);
