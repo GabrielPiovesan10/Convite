@@ -5,46 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Convite Aliane & Luis Felipe</title>
     <style>
-        /* Reset para ocupar a tela toda sem sobras */
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
+        /* RESET TOTAL - Remove qualquer margem do navegador */
+        * { 
+            box-sizing: border-box; 
+            -webkit-tap-highlight-color: transparent; 
+            margin: 0; 
+            padding: 0; 
+        }
         
-        body, html { 
+        html, body { 
             width: 100%; 
             height: 100%; 
-            overflow: hidden; /* Evita que a tela balance enquanto o convite abre */
+            overflow: hidden; /* Trava a tela para não sambar */
             background-color: #fdfbf8;
         }
 
-        /* CONTAINER PRINCIPAL (TELA DO CELULAR COMPLETA) */
+        /* CONTEÚDO PRINCIPAL EM TELA CHEIA */
         .invite-wrapper { 
             width: 100vw; 
             height: 100vh; 
             position: relative; 
             perspective: 2000px; 
             overflow: hidden;
-            /* box-shadow: Removi a sombra porque ela não aparece em tela cheia */
         }
 
-        /* --- 1ª PARTE: CAPA (ENVELOPE FECHADO) --- */
+        /* --- CAPA (O ENVELOPE QUE ABRE) --- */
         .envelope-left, .envelope-right { 
             position: absolute; 
             top: 0; 
-            width: 50.5vw; /* 50.5 para não ficar um risco no meio */
+            width: 50.5vw; /* Garante que as portas se cruzem no meio */
             height: 100vh; 
             background: #f4f1ee; 
             z-index: 10; 
-            transition: transform 2s cubic-bezier(0.4, 0, 0.2, 1); 
+            transition: transform 2.2s cubic-bezier(0.4, 0, 0.2, 1); 
         }
         .envelope-left { left: 0; transform-origin: left; border-right: 1px solid rgba(0,0,0,0.03); }
         .envelope-right { right: 0; transform-origin: right; }
         
+        /* O BOTÃO (SELO) - DEIXEI MAIOR PARA ACOMPANHAR A TELA */
         .selo-container {
             position: absolute; 
             left: 50%; 
-            top: 45%; 
+            top: 50%; 
             transform: translate(-50%, -50%);
-            width: 250px; 
-            height: 250px; 
+            width: 70vw; /* Ocupa 70% da largura da tela */
+            max-width: 300px; /* Limite para não ficar gigante demais em tablets */
             z-index: 20; 
             cursor: pointer; 
             display: flex; 
@@ -52,14 +57,12 @@
             align-items: center;
         }
 
-        /* IMAGEM 1: O BOTÃO/SELO */
         .img-selo { 
             width: 100%; 
             height: auto; 
-            transition: opacity 0.5s; 
         }
 
-        /* --- INTERIOR (ROLAGEM COMPLETA) --- */
+        /* --- INTERIOR (PÁGINA DE ROLAGEM) --- */
         .card-scroll { 
             width: 100vw; 
             height: 100vh; 
@@ -68,28 +71,22 @@
             display: flex; 
             flex-direction: column; 
             z-index: 5;
-            -webkit-overflow-scrolling: touch;
+            -webkit-overflow-scrolling: touch; /* Rolagem macia no iPhone */
         }
 
-        /* IMAGEM 2: PARTE DOS NOMES (ESCALA 100%) */
-        .img-parte-nomes { 
+        /* IMAGENS INTERNAS SEMPRE 100% DA LARGURA */
+        .img-parte-nomes, .img-parte-botoes { 
             width: 100%; 
             height: auto; 
             display: block; 
         }
 
-        /* IMAGEM 3: PARTE DOS BOTÕES (FUNDO EXCALA 100%) */
         .secao-botoes { 
             position: relative; 
             width: 100%; 
         }
-        .img-parte-botoes { 
-            width: 100%; 
-            height: auto; 
-            display: block; 
-        }
 
-        /* ÁREAS DE CLIQUE SOBRE A IMAGEM 3 */
+        /* ÁREAS DE CLIQUE INVISÍVEIS */
         .grid-links {
             position: absolute; 
             top: 0; 
@@ -99,20 +96,17 @@
             display: grid; 
             grid-template-columns: 1fr 1fr; 
             grid-template-rows: 1fr 1fr 1fr;
-            padding: 10% 5%;
         }
 
         .link-invisivel {
             display: flex; 
-            align-items: center; 
-            justify-content: center;
             text-decoration: none; 
-            color: transparent; /* Invisível para mostrar sua foto embaixo */
+            color: transparent;
         }
 
-        /* ESTADO ABERTO */
-        .invite-wrapper.open .envelope-left { transform: rotateY(-130deg); }
-        .invite-wrapper.open .envelope-right { transform: rotateY(130deg); }
+        /* ANIMAÇÃO DE ABERTURA */
+        .invite-wrapper.open .envelope-left { transform: rotateY(-150deg); }
+        .invite-wrapper.open .envelope-right { transform: rotateY(150deg); }
         .invite-wrapper.open .selo-container { opacity: 0; visibility: hidden; pointer-events: none; }
 
     </style>
@@ -128,18 +122,19 @@
         </div>
 
         <div class="card-scroll">
+            
             <img src="https://i.postimg.cc/3RdgNWyM/IMG-1268.jpg" class="img-parte-nomes">
 
             <div class="secao-botoes">
                 <img src="https://i.postimg.cc/4xPt1ptW/IMG-1269.jpg" class="img-parte-botoes">
 
                 <div class="grid-links">
-                    <a href="LINK_CONFIRMACAO" class="link-invisivel">Confirmar</a>
-                    <a href="LINK_MAPS" class="link-invisivel">Localização</a>
-                    <a href="LINK_PRESENTES" class="link-invisivel">Presentes</a>
-                    <a href="LINK_RECADOS" class="link-invisivel">Recados</a>
-                    <a href="LINK_NOIVA" class="link-invisivel">Noiva</a>
-                    <a href="LINK_NOIVO" class="link-invisivel">Noivo</a>
+                    <a href="LINK_CONFIRMACAO" class="link-invisivel"></a>
+                    <a href="LINK_MAPS" class="link-invisivel"></a>
+                    <a href="LINK_PRESENTES" class="link-invisivel"></a>
+                    <a href="LINK_RECADOS" class="link-invisivel"></a>
+                    <a href="LINK_NOIVA" class="link-invisivel"></a>
+                    <a href="LINK_NOIVO" class="link-invisivel"></a>
                 </div>
             </div>
 
