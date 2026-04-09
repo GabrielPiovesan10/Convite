@@ -5,119 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Convite Aliane & Luis Felipe</title>
     <style>
-        /* RESET TOTAL */
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
+        /* RESET TOTAL - Mata qualquer borda do navegador */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         
-        body, html { 
-            width: 100%; 
-            height: 100%; 
-            overflow: hidden; 
-            background-color: #fdfbf8;
-        }
+        html, body { width: 100%; height: 100%; overflow: hidden; background-color: #fdfbf8; }
 
         .invite-wrapper { 
             width: 100vw; 
             height: 100vh; 
             position: relative; 
             perspective: 2000px; 
-            overflow: hidden;
         }
 
-        /* --- CAPA (ENVELOPE) --- */
+        /* --- ENVELOPE --- */
         .envelope-left, .envelope-right { 
-            position: absolute; 
-            top: 0; 
-            width: 51vw; 
-            height: 100vh; 
-            background: #f4f1ee; 
-            z-index: 10; 
+            position: absolute; top: 0; width: 50.5vw; height: 100vh; 
+            background: #f4f1ee; z-index: 10; 
             transition: transform 2.2s cubic-bezier(0.4, 0, 0.2, 1); 
         }
         .envelope-left { left: 0; transform-origin: left; border-right: 1px solid rgba(0,0,0,0.03); }
         .envelope-right { right: 0; transform-origin: right; }
         
-        /* BOTÃO DO SELO (AJUSTADO) */
+        /* BOTÃO DO SELO - Centralizado e Grande */
         .selo-container {
-            position: absolute; 
-            left: 50%; 
-            top: 50%; 
-            transform: translate(-50%, -50%);
-            width: 280px; /* Tamanho do botão na tela */
-            height: 280px; 
-            z-index: 20; 
-            cursor: pointer; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center;
-            overflow: hidden;
+            position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+            width: 80vw; max-width: 300px; z-index: 20; cursor: pointer;
         }
+        .img-selo { width: 100%; height: auto; display: block; }
 
-        .img-selo { 
-            width: 98%; /* Zoom moderado no selo */
-            height: auto; 
-            flex-shrink: 0;
-        }
-
-        /* --- INTERIOR (CONTEÚDO) --- */
+        /* --- INTERIOR --- */
         .card-scroll { 
-            width: 100vw; 
-            height: 100vh; 
-            overflow-y: auto; 
-            overflow-x: hidden;
-            background-color: #fdfbf8; 
-            display: flex; 
-            flex-direction: column; 
-            z-index: 5;
-            -webkit-overflow-scrolling: touch;
+            width: 100vw; height: 100vh; overflow-y: auto; overflow-x: hidden;
+            display: flex; flex-direction: column; z-index: 5;
         }
 
-        /* CONTAINER PARA CENTRALIZAR O ZOOM */
-        .img-zoom-container {
+        /* O PULO DO GATO: Container que força o preenchimento */
+        .img-full {
             width: 100vw;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            position: relative;
+            height: auto;
+            display: block;
+            /* Se a imagem tiver borda lateral, esse scale aumenta ela e o overflow esconde */
+            transform: scale(1.15); 
+            transform-origin: center;
         }
 
-        .img-zoom { 
-            width: 125%; /* ZOOM MODERADO: Aumenta o suficiente para matar a borda sem sumir com o texto */
-            height: auto; 
-            display: block; 
-            flex-shrink: 0;
-        }
+        .secao-botoes { position: relative; width: 100vw; overflow: hidden; }
 
-        .secao-botoes { 
-            position: relative; 
-            width: 100vw; 
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-        }
-
-        /* ÁREAS DE CLIQUE (GRID) */
+        /* GRID DE LINKS INVISÍVEIS */
         .grid-links {
-            position: absolute; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%;
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            grid-template-rows: 1fr 1fr 1fr;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr 1fr;
             z-index: 30;
         }
+        .link-invisivel { text-decoration: none; color: transparent; }
 
-        .link-invisivel {
-            display: flex; 
-            text-decoration: none; 
-            color: transparent;
-        }
-
-        /* ANIMAÇÃO */
+        /* ABERTURA */
         .invite-wrapper.open .envelope-left { transform: rotateY(-155deg); }
         .invite-wrapper.open .envelope-right { transform: rotateY(155deg); }
-        .invite-wrapper.open .selo-container { opacity: 0; visibility: hidden; pointer-events: none; }
+        .invite-wrapper.open .selo-container { opacity: 0; visibility: hidden; }
 
     </style>
 </head>
@@ -132,16 +77,12 @@
         </div>
 
         <div class="card-scroll">
-            
-            <div class="img-zoom-container">
-                <img src="https://i.postimg.cc/3RdgNWyM/IMG-1268.jpg" class="img-zoom">
-            </div>
+            <img src="https://i.postimg.cc/3RdgNWyM/IMG-1268.jpg" class="img-full">
 
             <div class="secao-botoes">
-                <img src="https://i.postimg.cc/4xPt1ptW/IMG-1269.jpg" class="img-zoom">
-
+                <img src="https://i.postimg.cc/4xPt1ptW/IMG-1269.jpg" class="img-full">
                 <div class="grid-links">
-                    <a href="LINK_CONFIRMACAO" class="link-invisivel"></a>
+                    <a href="LINK_CONFIRMAR" class="link-invisivel"></a>
                     <a href="LINK_MAPS" class="link-invisivel"></a>
                     <a href="LINK_PRESENTES" class="link-invisivel"></a>
                     <a href="LINK_RECADOS" class="link-invisivel"></a>
@@ -149,7 +90,6 @@
                     <a href="LINK_NOIVO" class="link-invisivel"></a>
                 </div>
             </div>
-
         </div>
     </div>
 
