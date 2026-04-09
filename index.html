@@ -5,22 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Convite Aliane & Luis Felipe</title>
     <style>
-        /* RESET TOTAL - Remove qualquer margem do navegador */
-        * { 
-            box-sizing: border-box; 
-            -webkit-tap-highlight-color: transparent; 
-            margin: 0; 
-            padding: 0; 
-        }
+        /* RESET TOTAL */
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
         
-        html, body { 
+        body, html { 
             width: 100%; 
             height: 100%; 
-            overflow: hidden; /* Trava a tela para não sambar */
+            overflow: hidden; 
             background-color: #fdfbf8;
         }
 
-        /* CONTEÚDO PRINCIPAL EM TELA CHEIA */
         .invite-wrapper { 
             width: 100vw; 
             height: 100vh; 
@@ -29,11 +23,11 @@
             overflow: hidden;
         }
 
-        /* --- CAPA (O ENVELOPE QUE ABRE) --- */
+        /* --- CAPA (ENVELOPE) --- */
         .envelope-left, .envelope-right { 
             position: absolute; 
             top: 0; 
-            width: 50.5vw; /* Garante que as portas se cruzem no meio */
+            width: 51vw; 
             height: 100vh; 
             background: #f4f1ee; 
             z-index: 10; 
@@ -42,51 +36,64 @@
         .envelope-left { left: 0; transform-origin: left; border-right: 1px solid rgba(0,0,0,0.03); }
         .envelope-right { right: 0; transform-origin: right; }
         
-        /* O BOTÃO (SELO) - DEIXEI MAIOR PARA ACOMPANHAR A TELA */
+        /* BOTÃO DO SELO COM ZOOM */
         .selo-container {
             position: absolute; 
             left: 50%; 
             top: 50%; 
             transform: translate(-50%, -50%);
-            width: 70vw; /* Ocupa 70% da largura da tela */
-            max-width: 300px; /* Limite para não ficar gigante demais em tablets */
+            width: 100vw; /* Ocupa a largura da tela para o zoom funcionar */
+            height: 300px; 
             z-index: 20; 
             cursor: pointer; 
             display: flex; 
             justify-content: center; 
             align-items: center;
+            overflow: hidden; /* Corta a borda da imagem */
         }
 
         .img-selo { 
-            width: 100%; 
+            width: 160%; /* O ZOOM: Aumenta a imagem para a borda sair da tela */
             height: auto; 
+            transform: scale(1.2); /* Zoom extra se precisar */
         }
 
-        /* --- INTERIOR (PÁGINA DE ROLAGEM) --- */
+        /* --- INTERIOR COM ZOOM --- */
         .card-scroll { 
             width: 100vw; 
             height: 100vh; 
             overflow-y: auto; 
+            overflow-x: hidden;
             background-color: #fdfbf8; 
             display: flex; 
             flex-direction: column; 
             z-index: 5;
-            -webkit-overflow-scrolling: touch; /* Rolagem macia no iPhone */
+            -webkit-overflow-scrolling: touch;
         }
 
-        /* IMAGENS INTERNAS SEMPRE 100% DA LARGURA */
-        .img-parte-nomes, .img-parte-botoes { 
-            width: 100%; 
+        /* ZOOM NAS IMAGENS DE DENTRO PARA MATAR AS BORDAS LATERAIS */
+        .img-container {
+            width: 100vw;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+        }
+
+        .img-zoom { 
+            width: 150%; /* Aumenta a imagem para "espalhar" o convite na tela toda */
             height: auto; 
             display: block; 
         }
 
         .secao-botoes { 
             position: relative; 
-            width: 100%; 
+            width: 100vw; 
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
         }
 
-        /* ÁREAS DE CLIQUE INVISÍVEIS */
+        /* GRID DE LINKS (Ajustado para o novo tamanho com zoom) */
         .grid-links {
             position: absolute; 
             top: 0; 
@@ -96,6 +103,7 @@
             display: grid; 
             grid-template-columns: 1fr 1fr; 
             grid-template-rows: 1fr 1fr 1fr;
+            z-index: 30;
         }
 
         .link-invisivel {
@@ -104,9 +112,9 @@
             color: transparent;
         }
 
-        /* ANIMAÇÃO DE ABERTURA */
-        .invite-wrapper.open .envelope-left { transform: rotateY(-150deg); }
-        .invite-wrapper.open .envelope-right { transform: rotateY(150deg); }
+        /* ANIMAÇÃO */
+        .invite-wrapper.open .envelope-left { transform: rotateY(-155deg); }
+        .invite-wrapper.open .envelope-right { transform: rotateY(155deg); }
         .invite-wrapper.open .selo-container { opacity: 0; visibility: hidden; pointer-events: none; }
 
     </style>
@@ -123,10 +131,12 @@
 
         <div class="card-scroll">
             
-            <img src="https://i.postimg.cc/3RdgNWyM/IMG-1268.jpg" class="img-parte-nomes">
+            <div class="img-container">
+                <img src="https://i.postimg.cc/3RdgNWyM/IMG-1268.jpg" class="img-zoom">
+            </div>
 
             <div class="secao-botoes">
-                <img src="https://i.postimg.cc/4xPt1ptW/IMG-1269.jpg" class="img-parte-botoes">
+                <img src="https://i.postimg.cc/4xPt1ptW/IMG-1269.jpg" class="img-zoom">
 
                 <div class="grid-links">
                     <a href="LINK_CONFIRMACAO" class="link-invisivel"></a>
