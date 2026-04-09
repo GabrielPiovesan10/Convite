@@ -36,29 +36,29 @@
         .envelope-left { left: 0; transform-origin: left; border-right: 1px solid rgba(0,0,0,0.03); }
         .envelope-right { right: 0; transform-origin: right; }
         
-        /* BOTÃO DO SELO COM ZOOM */
+        /* BOTÃO DO SELO (AJUSTADO) */
         .selo-container {
             position: absolute; 
             left: 50%; 
             top: 50%; 
             transform: translate(-50%, -50%);
-            width: 100vw; /* Ocupa a largura da tela para o zoom funcionar */
-            height: 300px; 
+            width: 280px; /* Tamanho do botão na tela */
+            height: 280px; 
             z-index: 20; 
             cursor: pointer; 
             display: flex; 
             justify-content: center; 
             align-items: center;
-            overflow: hidden; /* Corta a borda da imagem */
+            overflow: hidden;
         }
 
         .img-selo { 
-            width: 160%; /* O ZOOM: Aumenta a imagem para a borda sair da tela */
+            width: 130%; /* Zoom moderado no selo */
             height: auto; 
-            transform: scale(1.2); /* Zoom extra se precisar */
+            flex-shrink: 0;
         }
 
-        /* --- INTERIOR COM ZOOM --- */
+        /* --- INTERIOR (CONTEÚDO) --- */
         .card-scroll { 
             width: 100vw; 
             height: 100vh; 
@@ -71,18 +71,20 @@
             -webkit-overflow-scrolling: touch;
         }
 
-        /* ZOOM NAS IMAGENS DE DENTRO PARA MATAR AS BORDAS LATERAIS */
-        .img-container {
+        /* CONTAINER PARA CENTRALIZAR O ZOOM */
+        .img-zoom-container {
             width: 100vw;
             overflow: hidden;
             display: flex;
             justify-content: center;
+            position: relative;
         }
 
         .img-zoom { 
-            width: 150%; /* Aumenta a imagem para "espalhar" o convite na tela toda */
+            width: 125%; /* ZOOM MODERADO: Aumenta o suficiente para matar a borda sem sumir com o texto */
             height: auto; 
             display: block; 
+            flex-shrink: 0;
         }
 
         .secao-botoes { 
@@ -93,7 +95,7 @@
             justify-content: center;
         }
 
-        /* GRID DE LINKS (Ajustado para o novo tamanho com zoom) */
+        /* ÁREAS DE CLIQUE (GRID) */
         .grid-links {
             position: absolute; 
             top: 0; 
@@ -131,7 +133,7 @@
 
         <div class="card-scroll">
             
-            <div class="img-container">
+            <div class="img-zoom-container">
                 <img src="https://i.postimg.cc/3RdgNWyM/IMG-1268.jpg" class="img-zoom">
             </div>
 
