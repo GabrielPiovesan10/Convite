@@ -5,11 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Convite Aliane & Luis Felipe</title>
     <style>
-        /* RESET TOTAL - Mata qualquer borda do navegador */
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        /* RESET TOTAL - Remove qualquer respiro do navegador */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            -webkit-tap-highlight-color: transparent; 
+        }
         
-        html, body { width: 100%; height: 100%; overflow: hidden; background-color: #fdfbf8; }
+        html, body { 
+            width: 100%; 
+            height: 100%; 
+            overflow: hidden; 
+            background-color: #fdfbf8; 
+        }
 
+        /* CONTAINER PRINCIPAL - 100% DA TELA */
         .invite-wrapper { 
             width: 100vw; 
             height: 100vh; 
@@ -17,51 +28,72 @@
             perspective: 2000px; 
         }
 
-        /* --- ENVELOPE --- */
+        /* --- ENVELOPE (CAPA) --- */
         .envelope-left, .envelope-right { 
-            position: absolute; top: 0; width: 50.5vw; height: 100vh; 
-            background: #f4f1ee; z-index: 10; 
-            transition: transform 2.2s cubic-bezier(0.4, 0, 0.2, 1); 
+            position: absolute; 
+            top: 0; 
+            width: 50.5vw; /* O .5 garante que não fique um risco branco no meio */
+            height: 100vh; 
+            background: #f4f1ee; 
+            z-index: 10; 
+            transition: transform 2s cubic-bezier(0.4, 0, 0.2, 1); 
         }
         .envelope-left { left: 0; transform-origin: left; border-right: 1px solid rgba(0,0,0,0.03); }
         .envelope-right { right: 0; transform-origin: right; }
         
-        /* BOTÃO DO SELO - Centralizado e Grande */
+        /* BOTÃO DO SELO (IMAGEM 1) */
         .selo-container {
-            position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-            width: 80vw; max-width: 300px; z-index: 20; cursor: pointer;
+            position: absolute; 
+            left: 50%; 
+            top: 50%; 
+            transform: translate(-50%, -50%);
+            width: 200px; /* Ajuste o tamanho do botão aqui se precisar */
+            z-index: 20; 
+            cursor: pointer;
         }
         .img-selo { width: 100%; height: auto; display: block; }
 
-        /* --- INTERIOR --- */
+        /* --- INTERIOR (CONTEÚDO) --- */
         .card-scroll { 
-            width: 100vw; height: 100vh; overflow-y: auto; overflow-x: hidden;
-            display: flex; flex-direction: column; z-index: 5;
+            width: 100vw; 
+            height: 100vh; 
+            overflow-y: auto; 
+            overflow-x: hidden;
+            display: flex; 
+            flex-direction: column; 
+            z-index: 5;
+            -webkit-overflow-scrolling: touch;
         }
 
-        /* O PULO DO GATO: Container que força o preenchimento */
-        .img-full {
-            width: 100vw;
+        /* IMAGENS INTERNAS (OCUPANDO 100% DA LARGURA) */
+        .img-convite {
+            width: 100%;
             height: auto;
-            display: block;
-            /* Se a imagem tiver borda lateral, esse scale aumenta ela e o overflow esconde */
-            transform: scale(1.15); 
-            transform-origin: center;
+            display: block; /* Remove o espaço que fica embaixo da imagem */
         }
 
-        .secao-botoes { position: relative; width: 100vw; overflow: hidden; }
+        .secao-botoes { 
+            position: relative; 
+            width: 100%; 
+        }
 
-        /* GRID DE LINKS INVISÍVEIS */
+        /* GRID DE LINKS (ÁREAS DE CLIQUE) */
         .grid-links {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr 1fr;
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%;
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            grid-template-rows: 1fr 1fr 1fr;
             z-index: 30;
         }
         .link-invisivel { text-decoration: none; color: transparent; }
 
-        /* ABERTURA */
-        .invite-wrapper.open .envelope-left { transform: rotateY(-155deg); }
-        .invite-wrapper.open .envelope-right { transform: rotateY(155deg); }
+        /* ANIMAÇÃO DE ABERTURA */
+        .invite-wrapper.open .envelope-left { transform: rotateY(-150deg); }
+        .invite-wrapper.open .envelope-right { transform: rotateY(150deg); }
         .invite-wrapper.open .selo-container { opacity: 0; visibility: hidden; }
 
     </style>
@@ -77,17 +109,18 @@
         </div>
 
         <div class="card-scroll">
-            <img src="https://i.postimg.cc/3RdgNWyM/IMG-1268.jpg" class="img-full">
+            <img src="https://i.postimg.cc/3RdgNWyM/IMG-1268.jpg" class="img-convite">
 
             <div class="secao-botoes">
-                <img src="https://i.postimg.cc/4xPt1ptW/IMG-1269.jpg" class="img-full">
+                <img src="https://i.postimg.cc/4xPt1ptW/IMG-1269.jpg" class="img-convite">
+                
                 <div class="grid-links">
-                    <a href="LINK_CONFIRMAR" class="link-invisivel"></a>
-                    <a href="LINK_MAPS" class="link-invisivel"></a>
-                    <a href="LINK_PRESENTES" class="link-invisivel"></a>
-                    <a href="LINK_RECADOS" class="link-invisivel"></a>
-                    <a href="LINK_NOIVA" class="link-invisivel"></a>
-                    <a href="LINK_NOIVO" class="link-invisivel"></a>
+                    <a href="#" class="link-invisivel"></a>
+                    <a href="#" class="link-invisivel"></a>
+                    <a href="#" class="link-invisivel"></a>
+                    <a href="#" class="link-invisivel"></a>
+                    <a href="#" class="link-invisivel"></a>
+                    <a href="#" class="link-invisivel"></a>
                 </div>
             </div>
         </div>
