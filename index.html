@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     
     <meta property="og:title" content="Convite de Casamento: Aliane & Luis Felipe">
-    <meta property="og:description" content="Preparamos algo especial para você. Clique para abrir nosso convite!">
+    <meta property="og:description" content="Preparamos algo especial para você!">
     <meta property="og:image" content="https://gabrielpiovesan10.github.io/Convite/thumb.JPG">
     <meta property="og:url" content="https://gabrielpiovesan10.github.io/Convite/">
     <meta property="og:type" content="website">
@@ -13,32 +13,72 @@
     <title>Convite Aliane & Luis Felipe</title>
     
     <style>
-        * { margin: 0 !important; padding: 0 !important; box-sizing: border-box !important; -webkit-tap-highlight-color: transparent; }
-        html, body { width: 100%; height: 100%; height: 100dvh; overflow: hidden; background-color: #f4f1ee; }
-        .invite-wrapper { width: 100vw; height: 100dvh; position: fixed; top: 0; left: 0; perspective: 2000px; overflow: hidden; touch-action: none; }
-        .envelope-left, .envelope-right { position: absolute; top: 0; width: 50.5vw; height: 100%; background: #f4f1ee; z-index: 10; transition: transform 2.2s cubic-bezier(0.4, 0, 0.2, 1); }
-        .envelope-left { left: 0; transform-origin: left; border-right: 1px solid rgba(0,0,0,0.03); }
-        .envelope-right { right: 0; transform-origin: right; }
-        .selo-container { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) scale(1.1); width: 100vw; z-index: 20; cursor: pointer; display: flex; justify-content: center; align-items: center; }
-        .img-selo { width: 100%; height: auto; display: block; }
-        .card-scroll { width: 100vw; height: 100%; overflow-y: auto; overflow-x: hidden; display: flex; flex-direction: column; z-index: 5; -webkit-overflow-scrolling: touch; background-color: #fdfbf8; visibility: hidden; }
-        .img-full { width: 100% !important; height: auto !important; display: block !important; }
-        .secao-botoes { position: relative; width: 100%; line-height: 0; }
+        /* RESET TOTAL - Sem folgas */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         
+        html, body { 
+            width: 100%; height: 100%; height: 100dvh; 
+            overflow: hidden; background-color: #f4f1ee; 
+        }
+
+        .invite-wrapper { 
+            width: 100vw; height: 100dvh; position: fixed; 
+            top: 0; left: 0; perspective: 2000px; 
+        }
+
+        .envelope-left, .envelope-right { 
+            position: absolute; top: 0; width: 50.5vw; height: 100%; 
+            background: #f4f1ee; z-index: 10; 
+            transition: transform 2s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+        .envelope-left { left: 0; transform-origin: left; }
+        .envelope-right { right: 0; transform-origin: right; }
+        
+        .selo-container {
+            position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+            width: 100vw; z-index: 20; cursor: pointer;
+        }
+        .img-selo { width: 100%; height: auto; display: block; }
+
+        .card-scroll { 
+            width: 100vw; height: 100%; overflow-y: auto; 
+            display: flex; flex-direction: column; z-index: 5; 
+            background-color: #fdfbf8; visibility: hidden;
+        }
+
+        /* TRAVA DE IMAGEM - Garante que não haja espaço fantasma */
+        .img-full { 
+            width: 100%; 
+            height: auto; 
+            display: block; 
+            line-height: 0;
+        }
+
+        .secao-botoes { 
+            position: relative; 
+            width: 100%; 
+            font-size: 0; /* Mata espaços entre divs */
+        }
+
+        /* GRID DE CLIQUES - ALINHADO AO PIXEL */
         .grid-links {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; /* Força o grid a ter o tamanho exato da imagem links.jpg */
             display: grid; 
             grid-template-columns: 1fr 1fr; 
             grid-template-rows: 1fr 1fr 1fr;
             z-index: 30;
         }
-        .link-invisivel { text-decoration: none; color: transparent; display: block; width: 100%; height: 100%; }
+        .grid-links a { display: block; width: 100%; height: 100%; }
 
-        .invite-wrapper.open { touch-action: auto; }
+        /* ABERTURA */
+        .invite-wrapper.open .envelope-left { transform: rotateY(-150deg); }
+        .invite-wrapper.open .envelope-right { transform: rotateY(150deg); }
+        .invite-wrapper.open .selo-container { display: none; }
         .invite-wrapper.open .card-scroll { visibility: visible; }
-        .invite-wrapper.open .envelope-left { transform: rotateY(-155deg); }
-        .invite-wrapper.open .envelope-right { transform: rotateY(155deg); }
-        .invite-wrapper.open .selo-container { opacity: 0; visibility: hidden; pointer-events: none; }
     </style>
 </head>
 <body>
@@ -50,26 +90,27 @@
     <div class="invite-wrapper" id="convite">
         <div class="envelope-left"></div>
         <div class="envelope-right"></div>
-        <div class="selo-container" onclick="abrirConvite()"><img src="lacre.jpg" class="img-selo"></div>
+        
+        <div class="selo-container" onclick="abrirConvite()">
+            <img src="lacre.jpg" class="img-selo">
+        </div>
 
         <div class="card-scroll" id="scroll-area">
             <img src="nomes.jpg" class="img-full">
             <div class="secao-botoes">
                 <img src="links.jpg" class="img-full">
                 <div class="grid-links">
+                    <a href="https://api.whatsapp.com/send?phone=5519981470614&text=Ol%C3%A1!%20Confirmo%20minha%20presen%C3%A7a!" target="_blank"></a>
                     
-                    <a href="https://api.whatsapp.com/send?phone=5519981470614&text=Ol%C3%A1!%20Gostaria%20de%20confirmar%20minha%20presen%C3%A7a%20no%20casamento%20de%20Aliane%20e%20Luis%20Felipe." target="_blank" class="link-invisivel"></a>
-                    
-                    <a href="https://maps.app.goo.gl/jEVfFfH8rWpP4n6b9?g_st=ic" target="_blank" class="link-invisivel"></a>
+                    <a href="https://maps.google.com/SUA_URL" target="_blank"></a>
 
-                    <a href="https://sites.icasei.com.br/alianeefelipe/home" target="_blank" class="link-invisivel"></a>
+                    <a href="https://SUA_LISTA" target="_blank"></a>
 
-                    <a href="COLOQUE_LINK_MURAL_AQUI" target="_blank" class="link-invisivel"></a>
+                    <a href="https://SEU_MURAL" target="_blank"></a>
 
-                    <a href="https://wa.me/19974176770" target="_blank" class="link-invisivel"></a>
+                    <a href="https://wa.me/5519XXXXXXXXX" target="_blank"></a>
 
-                    <a href="https://wa.me/19971699536" target="_blank" class="link-invisivel"></a>
-                    
+                    <a href="https://wa.me/5519XXXXXXXXX" target="_blank"></a>
                 </div>
             </div>
         </div>
@@ -78,9 +119,8 @@
     <script>
         function abrirConvite() {
             var audio = document.getElementById('musicaConvite');
-            audio.play().catch(function(e) { console.log("Erro som:", e); });
+            audio.play().catch(function(e) { console.log("Som:", e); });
             document.getElementById('convite').classList.add('open');
-            setTimeout(() => { document.getElementById('scroll-area').style.overflowY = 'auto'; }, 500);
         }
     </script>
 </body>
