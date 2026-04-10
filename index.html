@@ -6,14 +6,14 @@
     
     <meta property="og:title" content="Convite de Casamento: Aliane & Luis Felipe">
     <meta property="og:description" content="Preparamos algo especial para você. Clique para abrir nosso convite!">
-    <meta property="og:image" content="thumb.JPG">
-    <meta property="og:url" content="https://gabrielpiovesan10.github.io/Convite/#">
+    <meta property="og:image" content="https://gabrielpiovesan10.github.io/Convite/thumb.JPG">
+    <meta property="og:url" content="https://gabrielpiovesan10.github.io/Convite/">
     <meta property="og:type" content="website">
 
     <title>Convite Aliane & Luis Felipe</title>
     
     <style>
-        /* RESET TOTAL - Mata qualquer margem ou respiro do navegador */
+        /* RESET TOTAL - Garante tela cheia sem frestas */
         * { 
             margin: 0 !important; 
             padding: 0 !important; 
@@ -29,7 +29,7 @@
             background-color: #f4f1ee; 
         }
 
-        /* CONTAINER PRINCIPAL - PREGADO NA TELA */
+        /* CONTAINER PRINCIPAL */
         .invite-wrapper { 
             width: 100vw; 
             height: 100dvh; 
@@ -38,10 +38,10 @@
             left: 0;
             perspective: 2000px; 
             overflow: hidden;
-            touch-action: none; /* Trava o "balancinho" da tela inicial */
+            touch-action: none; /* Trava o balanço da tela inicial */
         }
 
-        /* --- ENVELOPE (PORTAS QUE COBREM TUDO) --- */
+        /* --- ENVELOPE --- */
         .envelope-left, .envelope-right { 
             position: absolute; 
             top: 0; 
@@ -54,7 +54,7 @@
         .envelope-left { left: 0; transform-origin: left; }
         .envelope-right { right: 0; transform-origin: right; }
         
-        /* CONTAINER DO SELO - GIGANTE E CENTRALIZADO */
+        /* CONTAINER DO SELO (ZOOM APLICADO) */
         .selo-container {
             position: absolute; 
             left: 50%; 
@@ -74,7 +74,7 @@
             display: block;
         }
 
-        /* --- INTERIOR (PÁGINA DE ROLAGEM) --- */
+        /* --- INTERIOR --- */
         .card-scroll { 
             width: 100vw; 
             height: 100%; 
@@ -96,7 +96,6 @@
 
         .secao-botoes { position: relative; width: 100%; }
 
-        /* GRID DE LINKS (ÁREAS DE CLIQUE) */
         .grid-links {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr 1fr;
@@ -131,7 +130,8 @@
             <div class="secao-botoes">
                 <img src="links.jpg" class="img-full">
                 <div class="grid-links">
-                    <a href="LINK_DO_SEU_WHATSAPP" class="link-invisivel"></a>
+                    <a href="https://wa.me/5519981470614?text=Olá!%20Gostaria%20de%20confirmar%20minha%20presença%20no%20casamento%20de%20Aliane%20e%20Luis%20Felipe.%20Nome(s):" class="link-invisivel"></a>
+                    
                     <a href="LINK_DO_MAPS" class="link-invisivel"></a>
                     <a href="LINK_DOS_PRESENTES" class="link-invisivel"></a>
                     <a href="LINK_DOS_RECADOS" class="link-invisivel"></a>
@@ -144,14 +144,11 @@
 
     <script>
         function abrirConvite() {
-            // 1. Toca a música (Gatilho obrigatório por clique)
             var audio = document.getElementById('musicaConvite');
-            audio.play().catch(function(e) { console.log("Erro som:", e); });
+            audio.play().catch(function(e) { console.log("Som bloqueado:", e); });
 
-            // 2. Inicia a animação de abertura
             document.getElementById('convite').classList.add('open');
             
-            // 3. Libera a rolagem depois de meio segundo
             setTimeout(() => {
                 document.getElementById('scroll-area').style.overflowY = 'auto';
             }, 500);
