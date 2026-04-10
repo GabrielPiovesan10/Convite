@@ -11,78 +11,77 @@
     <meta property="og:type" content="website">
 
     <title>Convite Aliane & Luis Felipe</title>
-    
     <style>
-        /* RESET TOTAL - Mata qualquer bug de espaço do navegador */
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        
-        html, body { 
-            width: 100%; height: 100%; height: 100dvh; 
-            overflow: hidden; background-color: #f4f1ee; 
-        }
+    /* RESET TOTAL */
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    
+    html, body { 
+        width: 100%; height: 100%; height: 100dvh; 
+        overflow: hidden; background-color: #f4f1ee; 
+    }
 
-        .invite-wrapper { 
-            width: 100vw; height: 100dvh; position: fixed; 
-            top: 0; left: 0; perspective: 2000px; 
-        }
+    .invite-wrapper { 
+        width: 100vw; height: 100dvh; position: fixed; 
+        top: 0; left: 0; perspective: 2000px; 
+    }
 
-        /* ENVELOPE */
-        .envelope-left, .envelope-right { 
-            position: absolute; top: 0; width: 50.5vw; height: 100%; 
-            background: #f4f1ee; z-index: 10; 
-            transition: transform 2s cubic-bezier(0.4, 0, 0.2, 1); 
-        }
-        .envelope-left { left: 0; transform-origin: left; }
-        .envelope-right { right: 0; transform-origin: right; }
-        
-        .selo-container {
-            position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-            width: 100vw; z-index: 20; cursor: pointer;
-        }
-        .img-selo { width: 100%; height: auto; display: block; }
+    .envelope-left, .envelope-right { 
+        position: absolute; top: 0; width: 50.5vw; height: 100%; 
+        background: #f4f1ee; z-index: 10; 
+        transition: transform 2s cubic-bezier(0.4, 0, 0.2, 1); 
+    }
+    .envelope-left { left: 0; transform-origin: left; }
+    .envelope-right { right: 0; transform-origin: right; }
+    
+    .selo-container {
+        position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+        width: 100vw; z-index: 20; cursor: pointer;
+    }
+    .img-selo { width: 100%; height: auto; display: block; }
 
-        /* CONTEÚDO */
-        .card-scroll { 
-            width: 100vw; height: 100%; overflow-y: auto; 
-            display: flex; flex-direction: column; z-index: 5; 
-            background-color: #fdfbf8; visibility: hidden;
-        }
+    .card-scroll { 
+        width: 100vw; height: 100%; overflow-y: auto; 
+        display: flex; flex-direction: column; z-index: 5; 
+        background-color: #fdfbf8; visibility: hidden;
+    }
 
-        .img-full { width: 100%; height: auto; display: block; }
+    .img-full { width: 100%; height: auto; display: block; }
 
-        /* AQUI ESTÁ A MÁGICA: BOX DE BOTÕES TRAVADA */
-        .secao-botoes { 
-            position: relative; 
-            width: 100%; 
-            display: inline-block;
-            line-height: 0;
-        }
+    /* --- AQUI ESTÁ A SOLUÇÃO DEFINITIVA (CALIBRAGEM) --- */
+    .secao-botoes { 
+        position: relative; 
+        width: 100%; 
+        line-height: 0; /* Mata espaços fantasma */
+    }
 
-        .grid-links {
-            position: absolute; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%;
-            display: flex;
-            flex-wrap: wrap;
-            z-index: 30;
-        }
+    .grid-links {
+        position: absolute; 
+        /* Com base na imagem 3, os botões começam mais ou menos a 35% do topo da imagem */
+        top: 35%; 
+        left: 0; 
+        width: 100%; 
+        /* O grid ocupa o resto da imagem (100% - 35% do topo - 10% de respiro no fundo) */
+        height: 55%; 
+        display: flex;
+        flex-wrap: wrap;
+        z-index: 30;
+    }
 
-        /* Criamos 6 caixas de clique perfeitas */
-        .grid-links a { 
-            width: 50%; 
-            height: 33.33%; 
-            display: block;
-             border: 1px solid red;
-        }
+    .grid-links a { 
+        width: 50%; /* Esquerda e Direita */
+        height: 33.33%; /* 3 linhas de botões */
+        display: block;
+        /*border: 1px solid red;  <-- Tire o comentário para testar se os quadrados vermelhos caíram no lugar certo */
+    }
 
-        /* ABERTURA */
-        .invite-wrapper.open .envelope-left { transform: rotateY(-150deg); }
-        .invite-wrapper.open .envelope-right { transform: rotateY(150deg); }
-        .invite-wrapper.open .selo-container { display: none; }
-        .invite-wrapper.open .card-scroll { visibility: visible; }
-    </style>
+    /* ABERTURA */
+    .invite-wrapper.open .envelope-left { transform: rotateY(-150deg); }
+    .invite-wrapper.open .envelope-right { transform: rotateY(150deg); }
+    .invite-wrapper.open .selo-container { display: none; }
+    .invite-wrapper.open .card-scroll { visibility: visible; }
+</style>
+
+    
 </head>
 <body>
 
