@@ -13,7 +13,7 @@
     <title>Convite Aliane & Luis Felipe</title>
     
     <style>
-        /* RESET TOTAL */
+        /* RESET TOTAL - Mata qualquer bug de espaço do navegador */
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         
         html, body { 
@@ -26,6 +26,7 @@
             top: 0; left: 0; perspective: 2000px; 
         }
 
+        /* ENVELOPE */
         .envelope-left, .envelope-right { 
             position: absolute; top: 0; width: 50.5vw; height: 100%; 
             background: #f4f1ee; z-index: 10; 
@@ -40,37 +41,41 @@
         }
         .img-selo { width: 100%; height: auto; display: block; }
 
+        /* CONTEÚDO */
         .card-scroll { 
             width: 100vw; height: 100%; overflow-y: auto; 
             display: flex; flex-direction: column; z-index: 5; 
             background-color: #fdfbf8; visibility: hidden;
         }
 
-        .img-full { 
-            width: 100%; 
-            height: auto; 
-            display: block; 
-        }
+        .img-full { width: 100%; height: auto; display: block; }
 
-        /* CALIBRAGEM DOS BOTÕES */
+        /* AQUI ESTÁ A MÁGICA: BOX DE BOTÕES TRAVADA */
         .secao-botoes { 
             position: relative; 
             width: 100%; 
-            line-height: 0; 
+            display: inline-block;
+            line-height: 0;
         }
 
         .grid-links {
             position: absolute; 
-            top: 5%; /* EMPURRA O CLIQUE PARA BAIXO PARA BATER COM O DESENHO */
+            top: 0; 
             left: 0; 
             width: 100%; 
-            height: 95%; /* AJUSTA O TAMANHO PROPORCIONAL */
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            grid-template-rows: 1fr 1fr 1fr;
+            height: 100%;
+            display: flex;
+            flex-wrap: wrap;
             z-index: 30;
         }
-        .grid-links a { display: block; width: 100%; height: 100%; }
+
+        /* Criamos 6 caixas de clique perfeitas */
+        .grid-links a { 
+            width: 50%; 
+            height: 33.33%; 
+            display: block;
+            /* border: 1px solid red;  <-- Caso queira ver os botões para testar, tire o comentário desta linha */
+        }
 
         /* ABERTURA */
         .invite-wrapper.open .envelope-left { transform: rotateY(-150deg); }
@@ -88,27 +93,24 @@
     <div class="invite-wrapper" id="convite">
         <div class="envelope-left"></div>
         <div class="envelope-right"></div>
-        
-        <div class="selo-container" onclick="abrirConvite()">
-            <img src="lacre.jpg" class="img-selo">
-        </div>
+        <div class="selo-container" onclick="abrirConvite()"><img src="lacre.jpg" class="img-selo"></div>
 
         <div class="card-scroll" id="scroll-area">
             <img src="nomes.jpg" class="img-full">
             <div class="secao-botoes">
                 <img src="links.jpg" class="img-full">
                 <div class="grid-links">
-                    <a href="https://api.whatsapp.com/send?phone=5519981470614&text=Ol%C3%A1!%20Confirmo%20minha%20presen%C3%A7a!" target="_blank"></a>
+                    <a href="https://api.whatsapp.com/send?phone=5519981470614&text=Ol%C3%A1!%20Gostaria%20de%20confirmar%20minha%20presen%C3%A7a%20no%20casamento." target="_blank"></a>
                     
-                    <a href="https://maps.app.goo.gl/jEVfFfH8rWpP4n6b9?g_st=ic" target="_blank"></a>
-
-                    <a href="https://sites.icasei.com.br/alianeefelipe/home" target="_blank"></a>
+                    <a href="https://www.google.com/maps" target="_blank"></a>
 
                     <a href="https://www.google.com" target="_blank"></a>
 
-                    <a href="https://wa.me/5519974176770" target="_blank"></a>
+                    <a href="https://www.google.com" target="_blank"></a>
 
-                    <a href="https://wa.me/5519971699536" target="_blank"></a>
+                    <a href="https://wa.me/5519981470614" target="_blank"></a>
+
+                    <a href="https://wa.me/5519981470614" target="_blank"></a>
                 </div>
             </div>
         </div>
@@ -117,7 +119,7 @@
     <script>
         function abrirConvite() {
             var audio = document.getElementById('musicaConvite');
-            audio.play().catch(function(e) { console.log("Som:", e); });
+            audio.play().catch(function(e) { console.log("Erro som:", e); });
             document.getElementById('convite').classList.add('open');
         }
     </script>
