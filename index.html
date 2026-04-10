@@ -13,90 +13,19 @@
     <title>Convite Aliane & Luis Felipe</title>
     
     <style>
-        /* RESET TOTAL - Garante que o convite lamba as bordas do celular */
-        * { 
-            margin: 0 !important; 
-            padding: 0 !important; 
-            box-sizing: border-box !important;
-            -webkit-tap-highlight-color: transparent;
-        }
-        
-        html, body { 
-            width: 100%; 
-            height: 100%; 
-            height: 100dvh; 
-            overflow: hidden; 
-            background-color: #f4f1ee; 
-        }
-
-        /* CONTAINER PRINCIPAL */
-        .invite-wrapper { 
-            width: 100vw; 
-            height: 100dvh; 
-            position: fixed; 
-            top: 0;
-            left: 0;
-            perspective: 2000px; 
-            overflow: hidden;
-            touch-action: none; /* Trava o balanço da tela inicial */
-        }
-
-        /* --- ENVELOPE (CAPA) --- */
-        .envelope-left, .envelope-right { 
-            position: absolute; 
-            top: 0; 
-            width: 51vw; 
-            height: 100%; 
-            background: #f4f1ee; 
-            z-index: 10; 
-            transition: transform 2.2s cubic-bezier(0.4, 0, 0.2, 1); 
-        }
-        .envelope-left { left: 0; transform-origin: left; border-right: 1px solid rgba(0,0,0,0.03); }
+        * { margin: 0 !important; padding: 0 !important; box-sizing: border-box !important; -webkit-tap-highlight-color: transparent; }
+        html, body { width: 100%; height: 100%; height: 100dvh; overflow: hidden; background-color: #f4f1ee; }
+        .invite-wrapper { width: 100vw; height: 100dvh; position: fixed; top: 0; left: 0; perspective: 2000px; overflow: hidden; touch-action: none; }
+        .envelope-left, .envelope-right { position: absolute; top: 0; width: 51vw; height: 100%; background: #f4f1ee; z-index: 10; transition: transform 2.2s cubic-bezier(0.4, 0, 0.2, 1); }
+        .envelope-left { left: 0; transform-origin: left; }
         .envelope-right { right: 0; transform-origin: right; }
-        
-        /* CONTAINER DO SELO (LACRE) */
-        .selo-container {
-            position: absolute; 
-            left: 50%; 
-            top: 50%; 
-            transform: translate(-50%, -50%) scale(1.1); 
-            width: 100vw; 
-            z-index: 20; 
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .img-selo { 
-            width: 100%; 
-            height: auto; 
-            display: block;
-        }
-
-        /* --- INTERIOR (ROLAGEM) --- */
-        .card-scroll { 
-            width: 100vw; 
-            height: 100%; 
-            overflow-y: auto; 
-            overflow-x: hidden;
-            display: flex; 
-            flex-direction: column; 
-            z-index: 5;
-            -webkit-overflow-scrolling: touch;
-            background-color: #fdfbf8;
-            visibility: hidden;
-        }
-
-        .img-full {
-            width: 100% !important;
-            height: auto !important;
-            display: block !important;
-        }
-
+        .selo-container { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) scale(1.1); width: 100vw; z-index: 20; cursor: pointer; display: flex; justify-content: center; align-items: center; }
+        .img-selo { width: 100%; height: auto; display: block; }
+        .card-scroll { width: 100vw; height: 100%; overflow-y: auto; overflow-x: hidden; display: flex; flex-direction: column; z-index: 5; -webkit-overflow-scrolling: touch; background-color: #fdfbf8; visibility: hidden; }
+        .img-full { width: 100% !important; height: auto !important; display: block !important; }
         .secao-botoes { position: relative; width: 100%; }
-
-        /* GRID DE LINKS (ÁREAS DE CLIQUE SOBRE A IMG 3) */
+        
+        /* O GRID QUE GERENCIA OS CLIQUES */
         .grid-links {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             display: grid; 
@@ -106,7 +35,6 @@
         }
         .link-invisivel { text-decoration: none; color: transparent; display: block; width: 100%; height: 100%; }
 
-        /* ESTADO ABERTO */
         .invite-wrapper.open { touch-action: auto; }
         .invite-wrapper.open .card-scroll { visibility: visible; }
         .invite-wrapper.open .envelope-left { transform: rotateY(-155deg); }
@@ -130,18 +58,20 @@
 
         <div class="card-scroll" id="scroll-area">
             <img src="nomes.jpg" class="img-full">
-
             <div class="secao-botoes">
                 <img src="links.jpg" class="img-full">
-                
                 <div class="grid-links">
-                    <a href="https://api.whatsapp.com/send?phone=5519981470614&text=Ol%C3%A1!%20Gostaria%20de%20confirmar%20minha%20presen%C3%A7a%20no%20casamento%20de%20Aliane%20e%20Luis%20Felipe.%20Nome(s)%3A" target="_blank" class="link-invisivel"></a>
+                    <a href="https://api.whatsapp.com/send?phone=5519981470614&text=Ol%C3%A1!%20Gostaria%20de%20confirmar%20minha%20presen%C3%A7a%20no%20casamento%20de%20Aliane%20e%20Luis%20Felipe." target="_blank" class="link-invisivel"></a>
                     
-                    <a href="https://LINK_DO_MAPS" target="_blank" class="link-invisivel"></a>
-                    <a href="https://LINK_LISTA_PRESENTES" target="_blank" class="link-invisivel"></a>
-                    <a href="https://LINK_MURAL_RECADOS" target="_blank" class="link-invisivel"></a>
-                    <a href="https://instagram.com/NOIVA" target="_blank" class="link-invisivel"></a>
-                    <a href="https://instagram.com/NOIVO" target="_blank" class="link-invisivel"></a>
+                    <a href="https://maps.google.com" target="_blank" class="link-invisivel"></a>
+
+                    <a href="https://SUA_LISTA_AQUI" target="_blank" class="link-invisivel"></a>
+
+                    <a href="https://SEU_MURAL_AQUI" target="_blank" class="link-invisivel"></a>
+
+                    <a href="https://wa.me/NUMERO_NOIVA" target="_blank" class="link-invisivel"></a>
+
+                    <a href="https://wa.me/5519981470614" target="_blank" class="link-invisivel"></a>
                 </div>
             </div>
         </div>
@@ -149,17 +79,10 @@
 
     <script>
         function abrirConvite() {
-            // Toca a música
             var audio = document.getElementById('musicaConvite');
-            audio.play().catch(function(e) { console.log("Som bloqueado pelo navegador:", e); });
-
-            // Inicia a animação
+            audio.play().catch(function(e) { console.log("Erro som:", e); });
             document.getElementById('convite').classList.add('open');
-            
-            // Libera a rolagem
-            setTimeout(() => {
-                document.getElementById('scroll-area').style.overflowY = 'auto';
-            }, 500);
+            setTimeout(() => { document.getElementById('scroll-area').style.overflowY = 'auto'; }, 500);
         }
     </script>
 </body>
