@@ -39,28 +39,28 @@
     }
     .img-selo { width: 100%; height: auto; display: block; }
 
+    /* AJUSTE PARA JUNTAR AS FOLHAS */
     .card-scroll { 
         width: 100vw; height: 100%; overflow-y: auto; 
         display: flex; flex-direction: column; z-index: 5; 
         background-color: #fdfbf8; visibility: hidden;
+        font-size: 0;   /* Mata espaço entre as imagens */
+        line-height: 0; /* Mata o respiro embaixo das imagens */
     }
 
     .img-full { width: 100%; height: auto; display: block; }
 
-    /* --- AQUI ESTÁ A SOLUÇÃO DEFINITIVA (CALIBRAGEM) --- */
     .secao-botoes { 
         position: relative; 
         width: 100%; 
-        line-height: 0; /* Mata espaços fantasma */
+        line-height: 0; 
     }
 
     .grid-links {
         position: absolute; 
-        /* Com base na imagem 3, os botões começam mais ou menos a 35% do topo da imagem */
         top: 35%; 
         left: 0; 
         width: 100%; 
-        /* O grid ocupa o resto da imagem (100% - 35% do topo - 10% de respiro no fundo) */
         height: 55%; 
         display: flex;
         flex-wrap: wrap;
@@ -68,10 +68,9 @@
     }
 
     .grid-links a { 
-        width: 50%; /* Esquerda e Direita */
-        height: 33.33%; /* 3 linhas de botões */
+        width: 50%; 
+        height: 33.33%; 
         display: block;
-        /*border: 1px solid red;  <-- Tire o comentário para testar se os quadrados vermelhos caíram no lugar certo */
     }
 
     /* ABERTURA */
@@ -80,8 +79,6 @@
     .invite-wrapper.open .selo-container { display: none; }
     .invite-wrapper.open .card-scroll { visibility: visible; }
 </style>
-
-    
 </head>
 <body>
 
@@ -100,15 +97,10 @@
                 <img src="links.jpg" class="img-full">
                 <div class="grid-links">
                     <a href="https://api.whatsapp.com/send?phone=5519981470614&text=Confirmo minha presença no casamento de Aliane e Luis Felipe. Será uma alegria fazer parte desse momento tão especial." target="_blank"></a>
-                    
                     <a href="https://maps.app.goo.gl/9y7zqaaaiWxsgUaj8?g_st=ic" target="_blank"></a>
-
                     <a href="https://sites.icasei.com.br/alianeefelipe/pages/37287638" target="_blank"></a>
-
                     <a href="https://sites.icasei.com.br/alianeefelipe/messages" target="_blank"></a>
-
                     <a href="https://wa.me/5519974176770" target="_blank"></a>
-
                     <a href="https://wa.me/5519971699536" target="_blank"></a>
                 </div>
             </div>
