@@ -13,7 +13,7 @@
     <title>Convite Aliane & Luis Felipe</title>
     
     <style>
-        /* RESET TOTAL - Garante tela cheia sem frestas */
+        /* RESET TOTAL - Garante que o convite lamba as bordas do celular */
         * { 
             margin: 0 !important; 
             padding: 0 !important; 
@@ -41,7 +41,7 @@
             touch-action: none; /* Trava o balanço da tela inicial */
         }
 
-        /* --- ENVELOPE --- */
+        /* --- ENVELOPE (CAPA) --- */
         .envelope-left, .envelope-right { 
             position: absolute; 
             top: 0; 
@@ -51,10 +51,10 @@
             z-index: 10; 
             transition: transform 2.2s cubic-bezier(0.4, 0, 0.2, 1); 
         }
-        .envelope-left { left: 0; transform-origin: left; }
+        .envelope-left { left: 0; transform-origin: left; border-right: 1px solid rgba(0,0,0,0.03); }
         .envelope-right { right: 0; transform-origin: right; }
         
-        /* CONTAINER DO SELO (ZOOM APLICADO) */
+        /* CONTAINER DO SELO (LACRE) */
         .selo-container {
             position: absolute; 
             left: 50%; 
@@ -74,7 +74,7 @@
             display: block;
         }
 
-        /* --- INTERIOR --- */
+        /* --- INTERIOR (ROLAGEM) --- */
         .card-scroll { 
             width: 100vw; 
             height: 100%; 
@@ -96,12 +96,15 @@
 
         .secao-botoes { position: relative; width: 100%; }
 
+        /* GRID DE LINKS (ÁREAS DE CLIQUE SOBRE A IMG 3) */
         .grid-links {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr 1fr;
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            grid-template-rows: 1fr 1fr 1fr;
             z-index: 30;
         }
-        .link-invisivel { text-decoration: none; color: transparent; }
+        .link-invisivel { text-decoration: none; color: transparent; display: block; width: 100%; height: 100%; }
 
         /* ESTADO ABERTO */
         .invite-wrapper.open { touch-action: auto; }
@@ -127,16 +130,18 @@
 
         <div class="card-scroll" id="scroll-area">
             <img src="nomes.jpg" class="img-full">
+
             <div class="secao-botoes">
                 <img src="links.jpg" class="img-full">
+                
                 <div class="grid-links">
-                    <a href="https://wa.me/5519981470614?text=Olá!%20Gostaria%20de%20confirmar%20minha%20presença%20no%20casamento%20de%20Aliane%20e%20Luis%20Felipe.%20Nome(s):" class="link-invisivel"></a>
+                    <a href="https://api.whatsapp.com/send?phone=5519981470614&text=Ol%C3%A1!%20Gostaria%20de%20confirmar%20minha%20presen%C3%A7a%20no%20casamento%20de%20Aliane%20e%20Luis%20Felipe.%20Nome(s)%3A" target="_blank" class="link-invisivel"></a>
                     
-                    <a href="LINK_DO_MAPS" class="link-invisivel"></a>
-                    <a href="LINK_DOS_PRESENTES" class="link-invisivel"></a>
-                    <a href="LINK_DOS_RECADOS" class="link-invisivel"></a>
-                    <a href="LINK_INSTA_NOIVA" class="link-invisivel"></a>
-                    <a href="LINK_INSTA_NOIVO" class="link-invisivel"></a>
+                    <a href="https://LINK_DO_MAPS" target="_blank" class="link-invisivel"></a>
+                    <a href="https://LINK_LISTA_PRESENTES" target="_blank" class="link-invisivel"></a>
+                    <a href="https://LINK_MURAL_RECADOS" target="_blank" class="link-invisivel"></a>
+                    <a href="https://instagram.com/NOIVA" target="_blank" class="link-invisivel"></a>
+                    <a href="https://instagram.com/NOIVO" target="_blank" class="link-invisivel"></a>
                 </div>
             </div>
         </div>
@@ -144,11 +149,14 @@
 
     <script>
         function abrirConvite() {
+            // Toca a música
             var audio = document.getElementById('musicaConvite');
-            audio.play().catch(function(e) { console.log("Som bloqueado:", e); });
+            audio.play().catch(function(e) { console.log("Som bloqueado pelo navegador:", e); });
 
+            // Inicia a animação
             document.getElementById('convite').classList.add('open');
             
+            // Libera a rolagem
             setTimeout(() => {
                 document.getElementById('scroll-area').style.overflowY = 'auto';
             }, 500);
