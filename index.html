@@ -35,11 +35,11 @@
         body.unlocked { overflow: auto; }
         body.unlocked html { overflow: auto; }
 
-        /* --- 🎁 EMBALAGEM DE LUXO (BLINDADA CONTRA FUNDO PRETO) --- */
+        /* --- 🎁 EMBALAGEM DE LUXO --- */
         #presente-overlay {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             z-index: 9999; display: flex; flex-direction: column;
-            background-color: var(--cream); /* Força o fundo a ser creme antes de tudo */
+            background-color: var(--cream);
         }
 
         .box-part {
@@ -47,10 +47,10 @@
             background-image: url('https://www.transparenttextures.com/patterns/paper.png');
             transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
             width: 100%;
-            border: none; /* Remove qualquer borda que crie linhas escuras */
+            border: none;
         }
 
-        /* --- ✨ SELO ESTABILIZADO --- */
+        /* --- ✨ SELO ESTABILIZADO E LIMPADO --- */
         .seal-btn {
             position: absolute; 
             top: 47% !important; 
@@ -62,7 +62,7 @@
             cursor: pointer;
             display: flex; align-items: center; justify-content: center;
             animation: pulse 3s infinite ease-in-out;
-            background: none; border: none; outline: none;
+            background: transparent !important; border: none; outline: none;
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
             will-change: transform;
@@ -71,8 +71,10 @@
         .seal-btn img {
             width: 100%; height: auto; display: block;
             filter: drop-shadow(0 10px 25px rgba(0,0,0,0.12));
-            /* Melhora a renderização da transparência no Chrome/Safari */
-            image-rendering: -webkit-optimize-contrast;
+            /* O SEGREDO: Clip-path faz um 'refile' de 1px pra tirar a sujeira da borda */
+            clip-path: inset(1px);
+            -webkit-clip-path: inset(1px);
+            background: transparent !important;
         }
 
         @keyframes pulse { 
@@ -84,7 +86,7 @@
         .opened .box-bottom { transform: translateY(100%); }
         .opened .seal-btn { opacity: 0; pointer-events: none; transition: opacity 0.5s; }
 
-        /* --- 📜 SITE COMPLETO (INTEGRALMENTE MANTIDO) --- */
+        /* --- 📜 SITE COMPLETO (MANTIDO 100%) --- */
         #site-content {
             min-height: 100vh; width: 100%; display: none;
         }
