@@ -43,7 +43,7 @@
         .box-top { border-bottom: 1px solid rgba(0,0,0,0.05); }
         .box-bottom { border-top: 1px solid rgba(0,0,0,0.05); }
 
-        /* --- ✨ SELO PERFEITO (AJUSTE FINO APROVADO) --- */
+        /* --- ✨ SELO PERFEITO (MANTIDO) --- */
         .seal-btn {
             position: absolute; 
             top: 52% !important; 
@@ -75,6 +75,17 @@
         /* --- 📜 SITE COMPLETO --- */
         #site-content {
             min-height: 100vh; width: 100%; display: none;
+        }
+
+        /* --- 💫 EFEITO REVEAL (NOVO) --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1.2s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* CAPA */
@@ -113,6 +124,38 @@
             color: var(--navy); max-width: 400px; width: 95%;
         }
 
+        /* --- 🔘 BOTÕES PERSONALIZADOS (NOVO) --- */
+        .grid-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            max-width: 500px;
+            margin: 40px auto 0 auto;
+        }
+
+        .btn-action {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 10px;
+            background: white;
+            border: 1px solid var(--gold);
+            border-radius: 15px;
+            text-decoration: none;
+            color: var(--navy);
+            font-size: 0.75rem;
+            font-weight: 600;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .btn-action:active { transform: scale(0.95); background: var(--cream); }
+
+        .btn-icon { font-size: 1.5rem; margin-bottom: 8px; }
+
+        .btn-full { grid-column: span 2; background: var(--gold); color: white; }
+
         .btn { display: inline-block; padding: 18px 45px; border-radius: 45px; text-decoration: none; font-weight: 600; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; margin-top: 15px; }
         .btn-gold { background: var(--gold); color: white; }
         .btn-outline { border: 2px solid var(--gold); color: var(--gold); }
@@ -136,48 +179,57 @@
     <div id="site-content">
         <div class="hero">
             <div style="z-index: 5;">
-                <span class="welcome-text">Convidamos você para o casamento de</span>
-                <h1>Aliane & Luis Felipe</h1>
-                <hr class="decorative-line">
-                <p class="hero-quote">"Nós amamos porque Ele nos amou primeiro". João 4:19</p>
+                <span class="welcome-text reveal">Convidamos você para o casamento de</span>
+                <h1 class="reveal">Aliane & Luis Felipe</h1>
+                <hr class="decorative-line reveal">
+                <p class="hero-quote reveal">"Nós amamos porque Ele nos amou primeiro". João 4:19</p>
             </div>
         </div>
 
         <div class="section section-cream">
-            <h2>Nossa Jornada</h2>
-            <p style="line-height: 1.9; color: #555; font-weight: 300; max-width: 600px; margin: 0 auto;">Aliane e Felipe têm daquelas histórias que parecem escritas com propósito.
-
-Tudo começou em 2016, em meio ao brilho das luzes e à energia de um rodeio. Em meio à multidão, olhares se cruzaram sem que eles soubessem que aquele instante simples guardava algo muito maior. A vida seguiu, cada um com seu caminho… mas o destino, com sua forma bonita de agir, tratou de uni-los novamente alguns meses depois — e dessa vez, foi diferente. Foi definitivo. Foi lar.
-
-Desde então, nunca mais se soltaram.
-
-Juntos, construíram muito mais do que momentos: construíram uma vida. Entre sonhos, desafios e até preconceitos, eles aprenderam que o amor verdadeiro não é aquele que não enfrenta dificuldades, mas o que permanece firme apesar delas. Sempre lado a lado, sempre um pelo outro.
-
-Em 2021, o amor ganhou uma nova forma — ainda mais pura e intensa. Deus os abençoou com a chegada de uma criança linda, trazendo ainda mais sentido, alegria e propósito à história que já era tão especial.
-
-E agora, em 2026, depois de 10 anos de caminhada, cumplicidade e amor, eles celebram não apenas um casamento… mas a confirmação de tudo o que viveram até aqui. Celebram a escolha diária, a parceria inabalável e o amor que resistiu, cresceu e floresceu.
-
-Porque algumas histórias não são apenas encontros.
-
-São planos de Deus. 🤍.</p>
+            <div class="reveal">
+                <h2>Nossa Jornada</h2>
+                <p style="line-height: 1.9; color: #555; font-weight: 300; max-width: 600px; margin: 0 auto; text-align: justify;">Aliane e Felipe têm daquelas histórias que parecem escritas com propósito. Tudo começou em 2016, em meio ao brilho das luzes e à energia de um rodeio. Em meio à multidão, olhares se cruzaram sem que eles soubessem que aquele instante simples guardava algo muito maior. A vida seguiu, cada um com seu caminho… mas o destino, com sua forma bonita de agir, tratou de uni-los novamente alguns meses depois — e dessa vez, foi diferente. Foi definitivo. Foi lar. Desde então, nunca mais se soltaram. Juntos, construíram muito mais do que momentos: construíram uma vida. Entre sonhos, desafios e até preconceitos, eles aprenderam que o amor verdadeiro não é aquele que não enfrenta dificuldades, mas o que permanece firme apesar delas. Sempre lado a lado, sempre um pelo outro. Em 2021, o amor ganhou uma nova forma — ainda mais pura e intensa. Deus os abençoou com a chegada de uma criança linda, trazendo ainda mais sentido, alegria e propósito à história que já era tão especial. E agora, em 2026, depois de 10 anos de caminhada, cumplicidade e amor, eles celebram não apenas um casamento… mas a confirmação de tudo o que viveram até aqui. Celebram a escolha diária, a parceria inabalável e o amor que resistiu, cresceu e floresceu. Porque algumas histórias não são apenas encontros. São planos de Deus. 🤍.</p>
+            </div>
         </div>
 
         <div class="details-bg">
-            <div class="content-card">
+            <div class="content-card reveal">
                 <h2 style="font-family: 'Cinzel'; color: var(--navy); margin-bottom: 15px;">A Celebração</h2>
                 <p style="font-weight: bold; color: var(--gold); font-size: 1.4rem; font-family: 'Cinzel';">12.OUTUBRO.2026</p>
                 <p>Às 16h30min</p>
                 <hr style="width: 50px; margin: 20px auto; border: 0.5px solid #ddd;">
                 <p style="font-weight: 600;">ENDEREÇO</p>
                 <p style="font-size: 0.85rem; color: #555;">ENDEREÇO-TESTE</p>
-                <a href="http://googleusercontent.com/maps.google.com/3" target="_blank" class="btn btn-outline">📍 Ver localização</a>
+                <a href="https://maps.google.com" target="_blank" class="btn btn-outline">📍 Ver localização</a>
             </div>
         </div>
 
         <div class="section">
-            <h2>Sua Presença</h2>
-            <p style="margin-bottom: 20px; color: #555;">Por favor, confirme sua presença até o dia de 2026.</p>
-            <a href="https://wa.me/5519993405480?text=Olá+Gostaria+De+Confirmar+minha+presença!" class="btn btn-gold">Confirmar via WhatsApp</a>
+            <div class="reveal">
+                <h2>Sua Presença</h2>
+                <p style="margin-bottom: 20px; color: #555;">Por favor, confirme sua presença até o dia de 2026.</p>
+                <a href="https://wa.me/5519993405480?text=Olá+Gostaria+De+Confirmar+minha+presença!" class="btn btn-gold">Confirmar via WhatsApp</a>
+            </div>
+
+            <div class="grid-buttons reveal">
+                <a href="https://wa.me/5519993405480" class="btn-action">
+                    <span class="btn-icon">👰</span>
+                    Falar com a Noiva
+                </a>
+                <a href="https://wa.me/5519993405480" class="btn-action">
+                    <span class="btn-icon">🤵</span>
+                    Falar com o Noivo
+                </a>
+                <a href="https://wa.me/5519993405480" class="btn-action">
+                    <span class="btn-icon">💌</span>
+                    Deixar um Recado
+                </a>
+                <a href="#" class="btn-action">
+                    <span class="btn-icon">🎁</span>
+                    Lista de Presentes
+                </a>
+            </div>
         </div>
     </div>
 
@@ -192,11 +244,25 @@ São planos de Deus. 🤍.</p>
             setTimeout(() => { 
                 document.body.classList.remove('locked'); 
                 document.body.classList.add('unlocked');
+                initReveal(); // Inicia o efeito de scroll após abrir
             }, 600);
             
             setTimeout(() => { 
                 document.getElementById('presente-overlay').style.display = 'none'; 
             }, 1200);
+        }
+
+        // Função para os elementos aparecerem no scroll
+        function initReveal() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         }
     </script>
 </body>
