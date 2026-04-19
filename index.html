@@ -21,24 +21,21 @@
             width: 100%;
             font-family: 'Montserrat', sans-serif;
             background-color: var(--cream);
+            color: var(--navy);
             overflow: hidden; 
         }
 
         body.unlocked { overflow: auto; }
+        body.unlocked html { overflow: auto; }
 
         /* --- 🎁 EMBALAGEM DE LUXO --- */
         #presente-overlay {
-            position: fixed; 
-            top: 0; left: 0; 
-            width: 100vw; height: 100vh;
-            z-index: 9999; 
-            display: flex; 
-            flex-direction: column;
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: 9999; display: flex; flex-direction: column;
         }
 
         .box-part {
-            flex: 1; 
-            background: var(--cream);
+            flex: 1; background: var(--cream);
             background-image: url('https://www.transparenttextures.com/patterns/paper.png');
             transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
             width: 100%;
@@ -46,33 +43,23 @@
         .box-top { border-bottom: 1px solid rgba(0,0,0,0.05); }
         .box-bottom { border-top: 1px solid rgba(0,0,0,0.05); }
 
-        /* --- ✨ SELO AJUSTADO (MAIOR E MAIS À ESQUERDA) --- */
+        /* --- ✨ SELO PERFEITO (AJUSTE FINO APROVADO) --- */
         .seal-btn {
             position: absolute; 
-            /* POSICIONAMENTO CALIBRADO */
             top: 52% !important; 
-            left: 46% !important; /* Puxado para a esquerda para compensar o visual */
+            left: 46% !important; 
             transform: translate(-50%, -50%) !important;
-            
-            /* TAMANHO MAXIMIZADO */
             width: 110vw !important; 
             max-width: 750px !important; 
-            
             z-index: 10000; 
             cursor: pointer;
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
+            display: flex; align-items: center; justify-content: center;
             animation: pulse 3s infinite ease-in-out;
-            background: none;
-            border: none;
-            outline: none;
+            background: none; border: none; outline: none;
         }
 
         .seal-btn img {
-            width: 100%;
-            height: auto;
-            display: block;
+            width: 100%; height: auto; display: block;
             filter: drop-shadow(0 20px 50px rgba(0,0,0,0.3));
         }
 
@@ -87,21 +74,48 @@
 
         /* --- 📜 SITE COMPLETO --- */
         #site-content {
-            min-height: 100vh; 
-            width: 100%;
-            display: none;
+            min-height: 100vh; width: 100%; display: none;
         }
 
+        /* CAPA */
         .hero {
             height: 100vh; width: 100%;
             background-color: var(--navy); 
             background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://i.ibb.co/g17P1tz/bfff2db2-0132-4f03-b906-b95ef0ec8fe5.jpg');
-            background-size: cover; 
-            background-position: center; 
+            background-size: cover; background-position: center; 
             display: flex; align-items: center; justify-content: center; text-align: center; color: white;
+            position: relative;
         }
         
-        .hero h1 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; }
+        .hero h1 { color: white; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); font-size: 3.5rem; margin-bottom: 15px; font-family: 'Great Vibes', cursive; }
+        .hero .welcome-text { text-transform: uppercase; letter-spacing: 4px; font-size: 0.65rem; margin-bottom: 25px; display: block; }
+        .hero hr.decorative-line { width: 150px; border: 0.5px solid var(--gold); margin: 0 auto 20px auto; opacity: 0.6; }
+        .hero .hero-quote { font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 1px; color: rgba(255,255,255,0.9); max-width: 85%; margin: 0 auto; }
+
+        .section { padding: 90px 25px; text-align: center; background: white; }
+        .section-cream { background: var(--cream); }
+
+        .details-bg {
+            position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            background-color: var(--navy);
+            background-image: url('https://i.ibb.co/3964Df3W/d6dcbe13-d9ec-4349-acb6-942c0a96edb4.jpg');
+            background-size: cover; background-position: center bottom;
+            padding: 80px 20px 220px 20px; 
+        }
+
+        h2 { font-family: 'Cinzel', serif; font-size: 1.8rem; letter-spacing: 3px; margin-bottom: 30px; color: var(--navy); }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px 25px; border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            color: var(--navy); max-width: 400px; width: 95%;
+        }
+
+        .btn { display: inline-block; padding: 18px 45px; border-radius: 45px; text-decoration: none; font-weight: 600; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; margin-top: 15px; }
+        .btn-gold { background: var(--gold); color: white; }
+        .btn-outline { border: 2px solid var(--gold); color: var(--gold); }
 
     </style>
 </head>
@@ -121,25 +135,56 @@
 
     <div id="site-content">
         <div class="hero">
-            <div>
-                <span style="text-transform: uppercase; letter-spacing: 4px; font-size: 0.7rem;">Convidamos você para o casamento de</span>
+            <div style="z-index: 5;">
+                <span class="welcome-text">Convidamos você para o casamento de</span>
                 <h1>Aliane & Luis Felipe</h1>
-                <p style="font-family: 'Cinzel', serif; margin-top: 20px;">"Nós amamos porque Ele nos amou primeiro".</p>
+                <hr class="decorative-line">
+                <p class="hero-quote">"Nós amamos porque Ele nos amou primeiro". João 4:19</p>
             </div>
         </div>
-        
-        <div style="padding: 80px 20px; text-align: center; background: white;">
-            <a href="https://wa.me/5519993405480" 
-               style="background: var(--gold); color: white; padding: 20px 40px; text-decoration: none; border-radius: 50px; font-weight: bold; display: inline-block;">
-               CONFIRMAR PRESENÇA
-            </a>
+
+        <div class="section section-cream">
+            <h2>Nossa Jornada</h2>
+            <p style="line-height: 1.9; color: #555; font-weight: 300; max-width: 600px; margin: 0 auto;">Aliane e Felipe têm daquelas histórias que parecem escritas com propósito.
+
+Tudo começou em 2016, em meio ao brilho das luzes e à energia de um rodeio. Em meio à multidão, olhares se cruzaram sem que eles soubessem que aquele instante simples guardava algo muito maior. A vida seguiu, cada um com seu caminho… mas o destino, com sua forma bonita de agir, tratou de uni-los novamente alguns meses depois — e dessa vez, foi diferente. Foi definitivo. Foi lar.
+
+Desde então, nunca mais se soltaram.
+
+Juntos, construíram muito mais do que momentos: construíram uma vida. Entre sonhos, desafios e até preconceitos, eles aprenderam que o amor verdadeiro não é aquele que não enfrenta dificuldades, mas o que permanece firme apesar delas. Sempre lado a lado, sempre um pelo outro.
+
+Em 2021, o amor ganhou uma nova forma — ainda mais pura e intensa. Deus os abençoou com a chegada de uma criança linda, trazendo ainda mais sentido, alegria e propósito à história que já era tão especial.
+
+E agora, em 2026, depois de 10 anos de caminhada, cumplicidade e amor, eles celebram não apenas um casamento… mas a confirmação de tudo o que viveram até aqui. Celebram a escolha diária, a parceria inabalável e o amor que resistiu, cresceu e floresceu.
+
+Porque algumas histórias não são apenas encontros.
+
+São planos de Deus. 🤍.</p>
+        </div>
+
+        <div class="details-bg">
+            <div class="content-card">
+                <h2 style="font-family: 'Cinzel'; color: var(--navy); margin-bottom: 15px;">A Celebração</h2>
+                <p style="font-weight: bold; color: var(--gold); font-size: 1.4rem; font-family: 'Cinzel';">12.OUTUBRO.2026</p>
+                <p>Às 16h30min</p>
+                <hr style="width: 50px; margin: 20px auto; border: 0.5px solid #ddd;">
+                <p style="font-weight: 600;">ENDEREÇO</p>
+                <p style="font-size: 0.85rem; color: #555;">ENDEREÇO-TESTE</p>
+                <a href="http://googleusercontent.com/maps.google.com/3" target="_blank" class="btn btn-outline">📍 Ver localização</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Sua Presença</h2>
+            <p style="margin-bottom: 20px; color: #555;">Por favor, confirme sua presença até o dia de 2026.</p>
+            <a href="https://wa.me/5519993405480?text=Olá+Gostaria+De+Confirmar+minha+presença!" class="btn btn-gold">Confirmar via WhatsApp</a>
         </div>
     </div>
 
     <script>
         function abrirConvite() {
             const audio = document.getElementById('invite-music');
-            audio.play().catch(e => console.log("Som ativado"));
+            audio.play().catch(e => console.log("Som liberado."));
             
             document.getElementById('presente-overlay').classList.add('opened');
             document.getElementById('site-content').style.display = 'block';
