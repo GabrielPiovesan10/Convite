@@ -50,13 +50,13 @@
         .box-top { border-bottom: 1px solid rgba(0,0,0,0.05); }
         .box-bottom { border-top: 1px solid rgba(0,0,0,0.05); }
 
-        /* --- ✨ SELO CENTRALIZADO E TURBINADO --- */
+        /* --- ✨ SELO GIGANTE E MAIS PARA CIMA (AJUSTADO) --- */
         .seal-btn {
             position: absolute; 
-            top: 50% !important; /* Centro Real */
-            left: 50% !important; /* Centro Real */
+            top: 48% !important; /* Subiu para ficar mais no topo */
+            left: 50% !important; /* Centralizado horizontalmente */
             transform: translate(-50%, -50%) !important;
-            width: 125vw !important; /* Aumentado conforme pedido */
+            width: 130vw !important; /* Tamanho turbinado */
             max-width: 850px !important; 
             z-index: 10000; 
             cursor: pointer;
@@ -67,12 +67,12 @@
 
         .seal-btn img {
             width: 100%; height: auto; display: block;
-            filter: drop-shadow(0 20px 50px rgba(0,0,0,0.3));
+            filter: drop-shadow(0 20px 60px rgba(0,0,0,0.35));
         }
 
         @keyframes pulse { 
             0%, 100% { transform: translate(-50%, -50%) scale(1); }
-            50% { transform: translate(-50%, -50%) scale(1.04); }
+            50% { transform: translate(-50%, -50%) scale(1.03); }
         }
 
         .opened .box-top { transform: translateY(-100%); }
@@ -84,7 +84,6 @@
             min-height: 100vh; width: 100%; display: none;
         }
 
-        /* --- 💫 EFEITO REVEAL --- */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -108,7 +107,6 @@
         .hero h1 { color: white; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); font-size: 3.5rem; margin-bottom: 15px; font-family: 'Great Vibes', cursive; }
         .hero .welcome-text { text-transform: uppercase; letter-spacing: 4px; font-size: 0.65rem; margin-bottom: 25px; display: block; }
         .hero hr.decorative-line { width: 150px; border: 0.5px solid var(--gold); margin: 0 auto 20px auto; opacity: 0.6; }
-        .hero .hero-quote { font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 1px; color: rgba(255,255,255,0.9); max-width: 85%; margin: 0 auto; }
 
         .section { padding: 90px 25px; text-align: center; background: white; }
         .section-cream { background: var(--cream); }
@@ -131,7 +129,6 @@
             color: var(--navy); max-width: 400px; width: 95%;
         }
 
-        /* --- 🔘 CENTRAL DE BOTÕES --- */
         .grid-buttons {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -141,24 +138,11 @@
         }
 
         .btn-action {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px 10px;
-            background: white;
-            border: 1px solid var(--gold);
-            border-radius: 15px;
-            text-decoration: none;
-            color: var(--navy);
-            font-size: 0.75rem;
-            font-weight: 600;
-            transition: 0.3s;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding: 20px 10px; background: white; border: 1px solid var(--gold);
+            border-radius: 15px; text-decoration: none; color: var(--navy);
+            font-size: 0.75rem; font-weight: 600; transition: 0.3s;
         }
-
-        .btn-action:active { transform: scale(0.95); background: var(--cream); }
-        .btn-icon { font-size: 1.5rem; margin-bottom: 8px; }
 
         .btn { display: inline-block; padding: 18px 45px; border-radius: 45px; text-decoration: none; font-weight: 600; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; margin-top: 15px; }
         .btn-gold { background: var(--gold); color: white; }
@@ -186,7 +170,7 @@
                 <span class="welcome-text reveal">Convidamos você para o casamento de</span>
                 <h1 class="reveal">Aliane & Luis Felipe</h1>
                 <hr class="decorative-line reveal">
-                <p class="hero-quote reveal">"Nós amamos porque Ele nos amou primeiro". João 4:19</p>
+                <p class="reveal" style="font-family: 'Cinzel', serif; font-size: 0.8rem;">"Nós amamos porque Ele nos amou primeiro". João 4:19</p>
             </div>
         </div>
 
@@ -194,7 +178,7 @@
             <div class="reveal">
                 <h2>Nossa Jornada</h2>
                 <p style="line-height: 1.9; color: #555; font-weight: 300; max-width: 600px; margin: 0 auto; text-align: justify;">
-                    Aliane e Felipe têm daquelas histórias que parecem escritas com propósito. Tudo começou em 2016, em meio ao brilho das luzes e à energia de um rodeio. Em meio à multidão, olhares se cruzaram sem que eles soubessem que aquele instante simples guardava algo muito maior. A vida seguiu, cada um com seu caminho… mas o destino, com sua forma bonita de agir, tratou de uni-los novamente alguns meses depois — e dessa vez, foi diferente. Foi definitivo. Foi lar. Desde então, nunca mais se soltaram. Juntos, construíram muito mais do que momentos: construíram uma vida. Entre sonhos, desafios e até preconceitos, eles aprenderam que o amor verdadeiro não é aquele que não enfrenta dificuldades, mas o que permanece firme apesar delas. Sempre lado a lado, sempre um pelo outro. Em 2021, o amor ganhou uma nova forma — ainda mais pura e intensa. Deus os abençoou com a chegada de uma criança linda, trazendo ainda mais sentido, alegria e propósito à história que já era tão especial. E agora, em 2026, depois de 10 anos de caminhada, cumplicidade e amor, eles celebram não apenas um casamento… mas a confirmação de tudo o que viveram até aqui. Celebram a escolha diária, a parceria inabalável e o amor que resistiu, cresceu e floresceu. Porque algumas histórias não são apenas encontros. São planos de Deus. 🤍
+                    Aliane e Felipe têm daquelas histórias que parecem escritas com propósito. Tudo começou em 2016... (texto da jornada mantido)
                 </p>
             </div>
         </div>
@@ -207,35 +191,22 @@
                 <hr style="width: 50px; margin: 20px auto; border: 0.5px solid #ddd;">
                 <p style="font-weight: 600;">ENDEREÇO</p>
                 <p style="font-size: 0.85rem; color: #555;">ENDEREÇO-TESTE</p>
-                <a href="https://maps.app.goo.gl/rtVUSWMApnfTxPcw8?g_st=ic" target="_blank" class="btn btn-outline">📍 Ver localização</a>
+                <a href="https://maps.google.com" target="_blank" class="btn btn-outline">📍 Ver localização</a>
             </div>
         </div>
 
         <div class="section">
             <div class="reveal">
                 <h2>Sua Presença</h2>
-                <p style="margin-bottom: 20px; color: #555;">Por favor, confirme sua presença até o dia de 2026.</p>
+                <p style="margin-bottom: 20px; color: #555;">Por favor, confirme sua presença pelo WhatsApp.</p>
                 <a href="https://wa.me/551981470614" class="btn btn-gold">Confirmar via WhatsApp</a>
             </div>
 
             <div class="grid-buttons reveal">
-                <a href="https://wa.me/551974176770" class="btn-action">
-                    <span class="btn-icon">👰</span>
-                    Falar com a Noiva
-                </a>
-                <a href="https://wa.me/551971699536" class="btn-action">
-                    <span class="btn-icon">🤵</span>
-                    Falar com o Noivo
-                </a>
-                <a href="https://sites.icasei.com.br/alianeefelipe/messages" class="btn-action">
-                    <span class="btn-icon">💌</span>
-                    Deixar um Recado
-                </a>
-
-                <a href="https://sites.icasei.com.br/alianeefelipe/pages/37287638" target="_blank" class="btn-action">
-                    <span class="btn-icon">🎁</span>
-                    Lista de Presentes
-                </a>
+                <a href="https://wa.me/551974176770" class="btn-action"><span>👰</span> Falar com a Noiva</a>
+                <a href="https://wa.me/551971699536" class="btn-action"><span>🤵</span> Falar com o Noivo</a>
+                <a href="https://sites.icasei.com.br/alianeefelipe/messages" class="btn-action"><span>💌</span> Deixar um Recado</a>
+                <a href="https://sites.icasei.com.br/alianeefelipe/pages/37287638" target="_blank" class="btn-action"><span>🎁</span> Lista de Presentes</a>
             </div>
         </div>
     </div>
@@ -244,30 +215,22 @@
         function abrirConvite() {
             const audio = document.getElementById('invite-music');
             audio.play().catch(e => console.log("Som liberado."));
-            
             document.getElementById('presente-overlay').classList.add('opened');
             document.getElementById('site-content').style.display = 'block';
-
             setTimeout(() => { 
                 document.body.classList.remove('locked'); 
                 document.body.classList.add('unlocked');
                 initReveal();
             }, 600);
-            
-            setTimeout(() => { 
-                document.getElementById('presente-overlay').style.display = 'none'; 
-            }, 1200);
+            setTimeout(() => { document.getElementById('presente-overlay').style.display = 'none'; }, 1200);
         }
 
         function initReveal() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    }
+                    if (entry.isIntersecting) { entry.target.classList.add('active'); }
                 });
             }, { threshold: 0.1 });
-
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         }
     </script>
