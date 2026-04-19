@@ -43,48 +43,28 @@
         .box-top { border-bottom: 1px solid rgba(0,0,0,0.05); }
         .box-bottom { border-top: 1px solid rgba(0,0,0,0.05); }
 
-        /* --- ✨ BOTÃO DE SELO --- */
+        /* --- ✨ IMAGEM DO SELO (BOTÃO) --- */
         .seal-btn {
             position: absolute; top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            width: 115px; height: 115px;
-            background: radial-gradient(circle, rgba(197, 160, 89, 1) 0%, rgba(139, 100, 39, 1) 100%);
-            border-radius: 50%;
+            width: 280px; /* Ajustado para o tamanho da arte floral */
+            height: auto;
             z-index: 20; cursor: pointer;
             display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3), inset 0 2px 5px rgba(255, 255, 255, 0.3); 
             animation: pulse 3s infinite ease-in-out;
+            background: none;
+            border: none;
         }
 
-        .seal-btn svg.circular-text { 
-            position: absolute; width: 155%; height: 155%; 
-            animation: rotateCircularText 12s linear infinite; 
-        }
-
-        @keyframes rotateCircularText {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
-        /* --- 💎 INICIAIS ESTILIZADAS (ATUALIZADO) --- */
-        .seal-btn .initials {
-            font-family: 'Great Vibes', cursive; /* Fonte cursiva de luxo */
-            font-weight: 400;
-            font-size: 4rem; /* Maior e imponente */
-            color: white;
-            z-index: 25;
-            letter-spacing: -2px; /* Letras próximas como uma assinatura */
-            /* Sombra avançada para efeito premium */
-            text-shadow: 
-                1px 1px 0px rgba(0,0,0,0.2),
-                3px 3px 10px rgba(0,0,0,0.4),
-                0 0 15px rgba(255,255,255,0.3);
-            margin-top: -10px; /* Ajuste fino de posição */
+        .seal-btn img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         @keyframes pulse { 
             0%, 100% { transform: translate(-50%, -50%) scale(1); }
-            50% { transform: translate(-50%, -50%) scale(1.04); }
+            50% { transform: translate(-50%, -50%) scale(1.05); }
         }
 
         .opened .box-top { transform: translateY(-100%); }
@@ -115,8 +95,8 @@
             position: relative;
         }
         
+        .hero h1 { color: white; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); font-size: 3.5rem; margin-bottom: 15px; font-family: 'Great Vibes', cursive; }
         .hero .welcome-text { text-transform: uppercase; letter-spacing: 4px; font-size: 0.65rem; margin-bottom: 25px; display: block; }
-        .hero h1 { color: white; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); font-size: 3.5rem; margin-bottom: 15px; }
         .hero hr.decorative-line { width: 150px; border: 0.5px solid var(--gold); margin: 0 auto 20px auto; opacity: 0.6; }
         .hero .hero-quote { font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 1px; color: rgba(255,255,255,0.9); max-width: 85%; margin: 0 auto; }
 
@@ -137,8 +117,7 @@
             padding: 80px 20px 220px 20px; 
         }
 
-        h1 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--gold); }
-        h2 { font-family: 'Cinzel', serif; font-size: 1.8rem; letter-spacing: 3px; margin-bottom: 30px; }
+        h2 { font-family: 'Cinzel', serif; font-size: 1.8rem; letter-spacing: 3px; margin-bottom: 30px; color: var(--navy); }
 
         .content-card {
             background: rgba(255, 255, 255, 0.9);
@@ -163,15 +142,7 @@
 
     <div id="presente-overlay">
         <div class="seal-btn" onclick="abrirConvite()">
-            <svg viewBox="0 0 160 160" class="circular-text">
-                <path id="curve" d="M 80, 80 m -68, 0 a 68,68 0 1,1 136,0 a 68,68 0 1,1 -136,0" fill="none" />
-                <text font-family="Montserrat" font-size="9" fill="black" font-weight="600" letter-spacing="4">
-                    <textPath xlink:href="#curve" startOffset="50%" text-anchor="middle">
-                        CLIQUE PARA ABRIR •
-                    </textPath>
-                </text>
-            </svg>
-            <span class="initials">AF</span>
+            <img src="selo.png" alt="Selo de Casamento">
         </div>
         <div class="box-part box-top"></div>
         <div class="box-part box-bottom"></div>
@@ -209,14 +180,13 @@
             <p style="margin-bottom: 20px; color: #555;">Por favor, confirme sua presença até o dia () de 2026.</p>
             <a href="https://wa.me/5519993405480?text=Olá+Gostaria+De+Confirmar+minha+presença!" class="btn btn-gold">Confirmar via WhatsApp</a>
         </div>
-
     </div>
 
     <script>
         const audio = document.getElementById('invite-music');
 
         function abrirConvite() {
-            audio.play().catch(e => console.log("O navegador bloqueou o autoplay. É necessário interagir com a página antes."));
+            audio.play().catch(e => console.log("Áudio aguardando interação."));
             
             document.getElementById('presente-overlay').classList.add('opened');
             document.getElementById('site-content').style.display = 'block';
