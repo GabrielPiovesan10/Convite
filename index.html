@@ -52,12 +52,13 @@
         .box-top { border-bottom: 1px solid rgba(0,0,0,0.05); }
         .box-bottom { border-top: 1px solid rgba(0,0,0,0.05); }
 
-        /* --- ✨ SELO CENTRALIZADO --- */
+        /* --- ✨ SELO ESTABILIZADO (FIX FINAL DO PIXEL) --- */
         .seal-btn {
             position: absolute; 
             top: 47% !important; 
             left: 50% !important; 
-            transform: translate(-50%, -50%) !important;
+            /* translate3d força o uso total da GPU para renderizar as bordas limpas */
+            transform: translate3d(-50%, -50%, 0) !important;
             width: 48vw !important; 
             max-width: 380px !important; 
             z-index: 10000; 
@@ -65,16 +66,23 @@
             display: flex; align-items: center; justify-content: center;
             animation: pulse 3s infinite ease-in-out;
             background: none; border: none; outline: none;
+            
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
         }
 
         .seal-btn img {
             width: 100%; height: auto; display: block;
             filter: drop-shadow(0 10px 25px rgba(0,0,0,0.15));
+            /* Truque de mestre: outline transparente 'engana' o navegador para suavizar a borda externa */
+            outline: 1px solid transparent;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
         }
 
         @keyframes pulse { 
-            0%, 100% { transform: translate(-50%, -50%) scale(1); }
-            50% { transform: translate(-50%, -50%) scale(1.03); }
+            0%, 100% { transform: translate3d(-50%, -50%, 0) scale(1); }
+            50% { transform: translate3d(-50%, -50%, 0) scale(1.03); }
         }
 
         .opened .box-top { transform: translateY(-100%); }
@@ -179,7 +187,7 @@
             <div class="reveal">
                 <h2>Nossa Jornada</h2>
                 <p style="line-height: 1.9; color: #555; font-weight: 300; max-width: 600px; margin: 0 auto; text-align: justify;">
-                  Aliane e Felipe têm daquelas histórias que parecem escritas com propósito. Tudo começou em 2016, em meio ao brilho das luzes e à energia de um rodeio. Em meio à multidão, olhares se cruzaram sem que eles soubessem que aquele instante simples guardava algo muito maior. A vida seguiu, cada um com seu caminho… mas o destino, com sua forma bonita de agir, tratou de uni-los novamente alguns meses depois — e dessa vez, foi diferente. Foi definitivo. Foi lar. Desde então, nunca mais se soltaram. Juntos, construíram muito mais do que momentos: construíram uma vida. Entre sonhos, desafios e até preconceitos, eles aprenderam que o amor verdadeiro não é aquele que não enfrenta dificuldades, mas o que permanece firme apesar delas. Sempre lado a lado, sempres um pelo outro. Em 2021, o amor ganhou uma nova forma — ainda mais pura e intensa. Deus os abençoou com a chegada de uma criança linda, trazendo ainda mais sentido, alegria e propósito à história que já era tão especial. E agora, em 2026, depois de 10 anos de caminhada, cumplicidade e amor, eles celebram não apenas um casamento… mas a confirmação de tudo o que viveram até aqui. Celebram a escolha diária, a parceria inabalável e o amor que resistiu, cresceu e floresceu. Porque algumas histórias não são apenas encontros. São planos de Deus. 🤍
+                  Aliane e Felipe têm daquelas histórias que parecem escritas com propósito. Tudo começou em 2016, em meio ao brilho das luzes e à energia de um rodeio. Em meio à multidão, olhares se cruzaram sem que eles soubessem que aquele instante simples guardava algo muito maior. A vida seguiu, cada um com seu caminho… mas o destino, com sua forma bonita de agir, tratou de uni-los novamente alguns meses depois — e dessa vez, foi diferente. Foi definitivo. Foi lar. Desde então, nunca mais se soltaram. Juntos, construíram muito mais do que momentos: construíram uma vida. Entre sonhos, desafios e até preconceitos, eles aprenderam que o amor verdadeiro não é aquele que não enfrenta dificuldades, mas o que permanece firme apesar delas. Sempre lado a lado, sempre um pelo outro. Em 2021, o amor ganhou uma nova forma — ainda mais pura e intensa. Deus os abençoou com a chegada de uma criança linda, trazendo ainda mais sentido, alegria e propósito à história que já era tão especial. E agora, em 2026, depois de 10 anos de caminhada, cumplicidade e amor, eles celebram não apenas um casamento… mas a confirmação de tudo o que viveram até aqui. Celebram a escolha diária, a parceria inabalável e o amor que resistiu, cresceu e floresceu. Porque algumas histórias não são apenas encontros. São planos de Deus. 🤍
                 </p>
             </div>
         </div>
