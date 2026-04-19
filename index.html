@@ -25,32 +25,29 @@
         }
 
         body.unlocked { overflow: auto; }
-        body.unlocked html { overflow: auto; }
 
         /* --- 🎁 EMBALAGEM DE LUXO --- */
         #presente-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             z-index: 9999; display: flex; flex-direction: column;
-            transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
         }
 
         .box-part {
             flex: 1; background: var(--cream);
             background-image: url('https://www.transparenttextures.com/patterns/paper.png');
-            display: flex; align-items: center; justify-content: center;
             transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
         }
         .box-top { border-bottom: 1px solid rgba(0,0,0,0.05); }
         .box-bottom { border-top: 1px solid rgba(0,0,0,0.05); }
 
-        /* --- ✨ IMAGEM DO SELO (BOTÃO TURBINADO) --- */
+        /* --- ✨ SELO GIGANTE E CENTRALIZADO (AJUSTADO) --- */
         .seal-btn {
             position: absolute; 
             top: 50%; 
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 380px; /* Aumentado para dar mais destaque */
-            height: auto;
+            width: 90%; /* Ocupa quase a largura toda do celular */
+            max-width: 500px; /* Limite para telas grandes */
             z-index: 10000; 
             cursor: pointer;
             display: flex; 
@@ -65,76 +62,35 @@
             width: 100%;
             height: auto;
             display: block;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15));
+            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.2));
         }
 
         @keyframes pulse { 
             0%, 100% { transform: translate(-50%, -50%) scale(1); }
-            50% { transform: translate(-50%, -50%) scale(1.04); }
+            50% { transform: translate(-50%, -50%) scale(1.03); }
         }
 
         .opened .box-top { transform: translateY(-100%); }
         .opened .box-bottom { transform: translateY(100%); }
-        .opened .seal-btn { opacity: 0; pointer-events: none; }
+        .opened .seal-btn { opacity: 0; pointer-events: none; transition: 0.5s; }
 
         /* --- 📜 SITE COMPLETO --- */
         #site-content {
             min-height: 100vh; width: 100%;
-            overflow-y: auto; overflow-x: hidden;
             display: none;
-            -webkit-overflow-scrolling: touch;
         }
 
-        /* CAPA */
         .hero {
             height: 100vh; width: 100%;
             background-color: var(--navy); 
             background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('https://i.ibb.co/g17P1tz/bfff2db2-0132-4f03-b906-b95ef0ec8fe5.jpg');
             background-size: cover; 
             background-position: center center; 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            position: relative;
+            display: flex; align-items: center; justify-content: center; text-align: center; color: white;
         }
         
-        .hero h1 { color: white; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); font-size: 3.5rem; margin-bottom: 15px; font-family: 'Great Vibes', cursive; }
-        .hero .welcome-text { text-transform: uppercase; letter-spacing: 4px; font-size: 0.65rem; margin-bottom: 25px; display: block; }
-        .hero hr.decorative-line { width: 150px; border: 0.5px solid var(--gold); margin: 0 auto 20px auto; opacity: 0.6; }
-        .hero .hero-quote { font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 1px; color: rgba(255,255,255,0.9); max-width: 85%; margin: 0 auto; }
-
-        .section { padding: 90px 25px; text-align: center; background: white; }
-        .section-cream { background: var(--cream); }
-
-        .details-bg {
-            position: relative; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-            background-color: var(--navy);
-            background-image: url('https://i.ibb.co/3964Df3W/d6dcbe13-d9ec-4349-acb6-942c0a96edb4.jpg');
-            background-size: cover; 
-            background-position: center bottom;
-            padding: 80px 20px 220px 20px; 
-        }
-
-        h2 { font-family: 'Cinzel', serif; font-size: 1.8rem; letter-spacing: 3px; margin-bottom: 30px; color: var(--navy); }
-
-        .content-card {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 40px 25px; border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-            backdrop-filter: blur(10px);
-            color: var(--navy);
-            max-width: 400px;
-        }
-
-        .btn { display: inline-block; padding: 18px 45px; border-radius: 45px; text-decoration: none; font-weight: 600; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; margin-top: 15px; }
-        .btn-gold { background: var(--gold); color: white; }
-        .btn-outline { border: 2px solid var(--gold); color: var(--gold); }
+        .hero h1 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: white; }
+        .btn { display: inline-block; padding: 18px 45px; border-radius: 45px; text-decoration: none; font-weight: 600; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; margin-top: 15px; background: var(--gold); color: white; }
 
     </style>
 </head>
@@ -146,7 +102,7 @@
 
     <div id="presente-overlay">
         <div class="seal-btn" onclick="abrirConvite()">
-            <img src="selo.PNG" alt="Selo de Casamento">
+            <img src="image.png" alt="Selo de Casamento">
         </div>
         <div class="box-part box-top"></div>
         <div class="box-part box-bottom"></div>
@@ -154,48 +110,27 @@
 
     <div id="site-content">
         <div class="hero">
-            <div style="z-index: 5;">
-                <span class="welcome-text">Convidamos você para o casamento de</span>
+            <div>
+                <span style="text-transform: uppercase; letter-spacing: 4px; font-size: 0.65rem;">Convidamos você para o casamento de</span>
                 <h1>Aliane & Luis Felipe</h1>
-                <hr class="decorative-line">
-                <p class="hero-quote">"Nós amamos porque Ele nos amou primeiro". João 4:19</p>
+                <p style="font-family: 'Cinzel', serif; font-size: 0.8rem; margin-top: 20px;">"Nós amamos porque Ele nos amou primeiro". João 4:19</p>
             </div>
         </div>
-
-        <div class="section section-cream">
-            <h2>Nossa Jornada</h2>
-            <p style="line-height: 1.9; color: #555; font-weight: 300; max-width: 600px; margin: 0 auto;">Um encontro traçado pelo destino e agora selado com a promessa de uma vida inteira juntos.</p>
-        </div>
-
-        <div class="details-bg">
-            <div class="content-card">
-                <h2>A Celebração</h2>
-                <p style="font-weight: bold; color: var(--gold); font-size: 1.4rem; font-family: 'Cinzel';">12.OUTUBRO.2026</p>
-                <p>Às 16h30min</p>
-                <hr style="width: 50px; margin: 20px auto; border: 0.5px solid #ddd;">
-                <p style="font-weight: 600;">ENDEREÇO</p>
-                <p style="font-size: 0.85rem; color: #555;">ENDEREÇO-TESTE</p>
-                <a href="http://googleusercontent.com/maps.google.com/2" target="_blank" class="btn btn-outline">📍 Ver localização</a>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>Sua Presença</h2>
-            <p style="margin-bottom: 20px; color: #555;">Por favor, confirme sua presença pelo WhatsApp.</p>
-            <a href="https://wa.me/5519993405480" class="btn btn-gold">Confirmar Presença</a>
+        <div style="padding: 100px 20px; text-align: center; background: white;">
+            <h2 style="font-family: 'Cinzel';">Confirmar Presença</h2>
+            <a href="https://wa.me/5519993405480" class="btn">Confirmar via WhatsApp</a>
         </div>
     </div>
 
     <script>
-        const audio = document.getElementById('invite-music');
-
         function abrirConvite() {
-            audio.play().catch(e => console.log("Áudio aguardando interação."));
+            const audio = document.getElementById('invite-music');
+            audio.play().catch(e => console.log("Erro no áudio"));
             
             document.getElementById('presente-overlay').classList.add('opened');
             document.getElementById('site-content').style.display = 'block';
 
-            setTimeout(() => { document.body.classList.add('unlocked'); }, 600);
+            setTimeout(() => { document.body.classList.remove('locked'); }, 600);
             setTimeout(() => { document.getElementById('presente-overlay').style.display = 'none'; }, 1200);
         }
     </script>
