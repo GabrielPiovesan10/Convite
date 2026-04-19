@@ -46,15 +46,14 @@
         .box-top { border-bottom: 1px solid rgba(0,0,0,0.05); }
         .box-bottom { border-top: 1px solid rgba(0,0,0,0.05); }
 
-        /* --- ✨ SELO SUPER GIGANTE E CENTRALIZADO --- */
+        /* --- ✨ SELO AJUSTADO (MAIS À ESQUERDA E MAIS PARA BAIXO) --- */
         .seal-btn {
             position: absolute; 
-            /* Centralização Absoluta */
-            top: 50% !important; 
-            left: 50% !important;
+            /* AJUSTE FINO DE POSIÇÃO */
+            top: 51.5% !important; /* Desceu um pouquinho (era 50%) */
+            left: 48.5% !important; /* Moveu para a esquerda (era 50%) */
             transform: translate(-50%, -50%) !important;
             
-            /* Tamanho agressivo para Mobile */
             width: 95vw !important; 
             max-width: 600px !important; 
             
@@ -73,7 +72,6 @@
             width: 100%;
             height: auto;
             display: block;
-            /* Sombra para dar profundidade no papel */
             filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));
         }
 
@@ -86,7 +84,7 @@
         .opened .box-bottom { transform: translateY(100%); }
         .opened .seal-btn { opacity: 0; pointer-events: none; transition: opacity 0.5s; }
 
-        /* --- 📜 SITE COMPLETO (SÓ APARECE DEPOIS) --- */
+        /* --- 📜 SITE COMPLETO --- */
         #site-content {
             min-height: 100vh; 
             width: 100%;
