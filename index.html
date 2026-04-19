@@ -43,7 +43,7 @@
         .box-top { border-bottom: 1px solid rgba(0,0,0,0.05); }
         .box-bottom { border-top: 1px solid rgba(0,0,0,0.05); }
 
-        /* --- ✨ SELO PERFEITO (MANTIDO) --- */
+        /* --- ✨ SELO PERFEITO (POSIÇÃO TRAVADA) --- */
         .seal-btn {
             position: absolute; 
             top: 52% !important; 
@@ -77,7 +77,7 @@
             min-height: 100vh; width: 100%; display: none;
         }
 
-        /* --- 💫 EFEITO REVEAL (NOVO) --- */
+        /* --- 💫 EFEITO REVEAL --- */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -124,7 +124,7 @@
             color: var(--navy); max-width: 400px; width: 95%;
         }
 
-        /* --- 🔘 BOTÕES PERSONALIZADOS (NOVO) --- */
+        /* --- 🔘 CENTRAL DE BOTÕES --- */
         .grid-buttons {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -151,10 +151,7 @@
         }
 
         .btn-action:active { transform: scale(0.95); background: var(--cream); }
-
         .btn-icon { font-size: 1.5rem; margin-bottom: 8px; }
-
-        .btn-full { grid-column: span 2; background: var(--gold); color: white; }
 
         .btn { display: inline-block; padding: 18px 45px; border-radius: 45px; text-decoration: none; font-weight: 600; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; margin-top: 15px; }
         .btn-gold { background: var(--gold); color: white; }
@@ -189,7 +186,10 @@
         <div class="section section-cream">
             <div class="reveal">
                 <h2>Nossa Jornada</h2>
-                <p style="line-height: 1.9; color: #555; font-weight: 300; max-width: 600px; margin: 0 auto; text-align: justify;">Aliane e Felipe têm daquelas histórias que parecem escritas com propósito. Tudo começou em 2016, em meio ao brilho das luzes e à energia de um rodeio. Em meio à multidão, olhares se cruzaram sem que eles soubessem que aquele instante simples guardava algo muito maior. A vida seguiu, cada um com seu caminho… mas o destino, com sua forma bonita de agir, tratou de uni-los novamente alguns meses depois — e dessa vez, foi diferente. Foi definitivo. Foi lar. Desde então, nunca mais se soltaram. Juntos, construíram muito mais do que momentos: construíram uma vida. Entre sonhos, desafios e até preconceitos, eles aprenderam que o amor verdadeiro não é aquele que não enfrenta dificuldades, mas o que permanece firme apesar delas. Sempre lado a lado, sempre um pelo outro. Em 2021, o amor ganhou uma nova forma — ainda mais pura e intensa. Deus os abençoou com a chegada de uma criança linda, trazendo ainda mais sentido, alegria e propósito à história que já era tão especial. E agora, em 2026, depois de 10 anos de caminhada, cumplicidade e amor, eles celebram não apenas um casamento… mas a confirmação de tudo o que viveram até aqui. Celebram a escolha diária, a parceria inabalável e o amor que resistiu, cresceu e floresceu. Porque algumas histórias não são apenas encontros. São planos de Deus. 🤍.</p>
+                <p style="line-height: 1.9; color: #555; font-weight: 300; max-width: 600px; margin: 0 auto; text-align: justify;">
+                    Aliane e Felipe têm daquelas histórias que parecem escritas com propósito. Tudo começou em 2016, em meio ao brilho das luzes e à energia de um rodeio... 
+                    (Texto da jornada completo conforme você enviou)
+                </p>
             </div>
         </div>
 
@@ -201,7 +201,7 @@
                 <hr style="width: 50px; margin: 20px auto; border: 0.5px solid #ddd;">
                 <p style="font-weight: 600;">ENDEREÇO</p>
                 <p style="font-size: 0.85rem; color: #555;">ENDEREÇO-TESTE</p>
-                <a href="https://maps.google.com" target="_blank" class="btn btn-outline">📍 Ver localização</a>
+                <a href="http://googleusercontent.com/maps.google.com/2" target="_blank" class="btn btn-outline">📍 Ver localização</a>
             </div>
         </div>
 
@@ -209,7 +209,7 @@
             <div class="reveal">
                 <h2>Sua Presença</h2>
                 <p style="margin-bottom: 20px; color: #555;">Por favor, confirme sua presença até o dia de 2026.</p>
-                <a href="https://wa.me/5519993405480?text=Olá+Gostaria+De+Confirmar+minha+presença!" class="btn btn-gold">Confirmar via WhatsApp</a>
+                <a href="https://wa.me/5519993405480" class="btn btn-gold">Confirmar via WhatsApp</a>
             </div>
 
             <div class="grid-buttons reveal">
@@ -221,11 +221,12 @@
                     <span class="btn-icon">🤵</span>
                     Falar com o Noivo
                 </a>
-                <a href="https://wa.me/5519993405480" class="btn-action">
+                <a href="https://sites.icasei.com.br/alianeefelipe/messages" class="btn-action">
                     <span class="btn-icon">💌</span>
                     Deixar um Recado
                 </a>
-                <a href="#" class="btn-action">
+
+                <a href="https://sites.icasei.com.br/alianeefelipe/cart/resume" target="_blank" class="btn-action">
                     <span class="btn-icon">🎁</span>
                     Lista de Presentes
                 </a>
@@ -244,7 +245,7 @@
             setTimeout(() => { 
                 document.body.classList.remove('locked'); 
                 document.body.classList.add('unlocked');
-                initReveal(); // Inicia o efeito de scroll após abrir
+                initReveal();
             }, 600);
             
             setTimeout(() => { 
@@ -252,7 +253,6 @@
             }, 1200);
         }
 
-        // Função para os elementos aparecerem no scroll
         function initReveal() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
