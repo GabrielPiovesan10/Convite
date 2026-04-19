@@ -50,14 +50,14 @@
         .box-top { border-bottom: 1px solid rgba(0,0,0,0.05); }
         .box-bottom { border-top: 1px solid rgba(0,0,0,0.05); }
 
-        /* --- ✨ SELO CENTRALIZADO (AJUSTE DE TAMANHO) --- */
+        /* --- ✨ SELO CENTRALIZADO (CALIBRAÇÃO FINAL) --- */
         .seal-btn {
             position: absolute; 
-            top: 50% !important; /* Centro Real na linha de dobra */
-            left: 50% !important; /* Centro Real horizontal */
+            top: 50% !important; /* Centro absoluto vertical */
+            left: 50% !important; /* Centro absoluto horizontal */
             transform: translate(-50%, -50%) !important;
-            width: 65vw !important; /* Diminuído para centralizar melhor visualmente */
-            max-width: 450px !important; 
+            width: 48vw !important; /* Diminuído para não dominar a tela toda */
+            max-width: 380px !important; 
             z-index: 10000; 
             cursor: pointer;
             display: flex; align-items: center; justify-content: center;
@@ -67,7 +67,7 @@
 
         .seal-btn img {
             width: 100%; height: auto; display: block;
-            filter: drop-shadow(0 15px 40px rgba(0,0,0,0.25));
+            filter: drop-shadow(0 10px 25px rgba(0,0,0,0.15));
         }
 
         @keyframes pulse { 
