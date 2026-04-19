@@ -46,16 +46,17 @@
         .box-top { border-bottom: 1px solid rgba(0,0,0,0.05); }
         .box-bottom { border-top: 1px solid rgba(0,0,0,0.05); }
 
-        /* --- ✨ SELO AJUSTADO (MAIS À ESQUERDA E MAIS PARA BAIXO) --- */
+        /* --- ✨ SELO AJUSTADO (MAIOR E MAIS À ESQUERDA) --- */
         .seal-btn {
             position: absolute; 
-            /* AJUSTE FINO DE POSIÇÃO */
-            top: 51.5% !important; /* Desceu um pouquinho (era 50%) */
-            left: 48.5% !important; /* Moveu para a esquerda (era 50%) */
+            /* POSICIONAMENTO CALIBRADO */
+            top: 52% !important; 
+            left: 46% !important; /* Puxado para a esquerda para compensar o visual */
             transform: translate(-50%, -50%) !important;
             
-            width: 95vw !important; 
-            max-width: 600px !important; 
+            /* TAMANHO MAXIMIZADO */
+            width: 110vw !important; 
+            max-width: 750px !important; 
             
             z-index: 10000; 
             cursor: pointer;
@@ -72,12 +73,12 @@
             width: 100%;
             height: auto;
             display: block;
-            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));
+            filter: drop-shadow(0 20px 50px rgba(0,0,0,0.3));
         }
 
         @keyframes pulse { 
             0%, 100% { transform: translate(-50%, -50%) scale(1); }
-            50% { transform: translate(-50%, -50%) scale(1.05); }
+            50% { transform: translate(-50%, -50%) scale(1.04); }
         }
 
         .opened .box-top { transform: translateY(-100%); }
