@@ -66,14 +66,20 @@
             to { transform: rotate(360deg); }
         }
         
+        /* --- 💎 INICIAIS ESTILIZADAS (ATUALIZADO) --- */
         .seal-btn .initials {
-            font-family: 'Cinzel', serif;
-            font-weight: 700;
-            font-size: 2.5rem;
+            font-family: 'Great Vibes', cursive; /* Fonte cursiva de luxo */
+            font-weight: 400;
+            font-size: 4rem; /* Maior e imponente */
             color: white;
             z-index: 25;
-            letter-spacing: 2px;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            letter-spacing: -2px; /* Letras próximas como uma assinatura */
+            /* Sombra avançada para efeito premium */
+            text-shadow: 
+                1px 1px 0px rgba(0,0,0,0.2),
+                3px 3px 10px rgba(0,0,0,0.4),
+                0 0 15px rgba(255,255,255,0.3);
+            margin-top: -10px; /* Ajuste fino de posição */
         }
 
         @keyframes pulse { 
@@ -147,18 +153,6 @@
         .btn-gold { background: var(--gold); color: white; }
         .btn-outline { border: 2px solid var(--gold); color: var(--gold); }
 
-        /* CONTROLE DE SOM */
-        .music-control {
-            position: fixed; bottom: 20px; left: 20px;
-            background: rgba(255, 255, 255, 0.8);
-            width: 45px; height: 45px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            z-index: 5000; cursor: pointer; border: 1px solid var(--gold);
-            color: var(--gold); font-size: 1.2rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            display: none; /* Só aparece depois que abre o convite */
-        }
-
     </style>
 </head>
 <body class="locked">
@@ -166,10 +160,6 @@
     <audio id="invite-music" loop>
         <source src="musica.mp3" type="audio/mpeg">
     </audio>
-
-    <div id="music-btn" class="music-control" onclick="toggleMusic()">
-        <span id="music-icon">🔊</span>
-    </div>
 
     <div id="presente-overlay">
         <div class="seal-btn" onclick="abrirConvite()">
@@ -224,29 +214,15 @@
 
     <script>
         const audio = document.getElementById('invite-music');
-        const musicBtn = document.getElementById('music-btn');
-        const musicIcon = document.getElementById('music-icon');
 
         function abrirConvite() {
-            // Toca a música assim que clica no selo
-            audio.play().catch(e => console.log("O navegador bloqueou o autoplay."));
+            audio.play().catch(e => console.log("O navegador bloqueou o autoplay. É necessário interagir com a página antes."));
             
             document.getElementById('presente-overlay').classList.add('opened');
             document.getElementById('site-content').style.display = 'block';
-            musicBtn.style.display = 'flex'; // Mostra o controle de som
 
             setTimeout(() => { document.body.classList.add('unlocked'); }, 600);
             setTimeout(() => { document.getElementById('presente-overlay').style.display = 'none'; }, 1200);
-        }
-
-        function toggleMusic() {
-            if (audio.paused) {
-                audio.play();
-                musicIcon.innerText = "🔊";
-            } else {
-                audio.pause();
-                musicIcon.innerText = "🔈";
-            }
         }
     </script>
 </body>
