@@ -50,14 +50,14 @@
         .box-top { border-bottom: 1px solid rgba(0,0,0,0.05); }
         .box-bottom { border-top: 1px solid rgba(0,0,0,0.05); }
 
-        /* --- ✨ SELO GIGANTE E POSICIONADO (CALIBRAÇÃO MESTRE) --- */
+        /* --- ✨ SELO CENTRALIZADO (AJUSTE DE TAMANHO) --- */
         .seal-btn {
             position: absolute; 
-            top: 50% !important; /* Centro visual na linha de dobra */
-            left: 50% !important; /* Centro visual da tela horizontalmente */
+            top: 50% !important; /* Centro Real na linha de dobra */
+            left: 50% !important; /* Centro Real horizontal */
             transform: translate(-50%, -50%) !important;
-            width: 80vw !important; /* Tamanho grande mas contido para o buquê alto */
-            max-width: 600px !important; 
+            width: 65vw !important; /* Diminuído para centralizar melhor visualmente */
+            max-width: 450px !important; 
             z-index: 10000; 
             cursor: pointer;
             display: flex; align-items: center; justify-content: center;
@@ -67,13 +67,12 @@
 
         .seal-btn img {
             width: 100%; height: auto; display: block;
-            filter: drop-shadow(0 25px 70px rgba(0,0,0,0.45));
+            filter: drop-shadow(0 15px 40px rgba(0,0,0,0.25));
         }
 
-        /* Animação de pulso mais sutil para imagem maior */
         @keyframes pulse { 
             0%, 100% { transform: translate(-50%, -50%) scale(1); }
-            50% { transform: translate(-50%, -50%) scale(1.02); }
+            50% { transform: translate(-50%, -50%) scale(1.03); }
         }
 
         .opened .box-top { transform: translateY(-100%); }
@@ -179,7 +178,7 @@
             <div class="reveal">
                 <h2>Nossa Jornada</h2>
                 <p style="line-height: 1.9; color: #555; font-weight: 300; max-width: 600px; margin: 0 auto; text-align: justify;">
-                  Aliane e Felipe têm daquelas histórias que parecem escritas com propósito. Tudo começou em 2016... (texto da jornada mantido)
+                  Aliane e Felipe têm daquelas histórias que parecem escritas com propósito. Tudo começou em 2016... (seu texto completo continua aqui)
                 </p>
             </div>
         </div>
@@ -196,20 +195,9 @@
 
                 <div style="margin-top: 30px; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 20px;">
                     <h3 style="font-family: 'Cinzel'; font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 15px; color: var(--navy);">Dress Code Sugerido</h3>
-                    
                     <p style="font-weight: 600; color: var(--gold); margin-bottom: 10px;">Traje: Esporte fino 🤎</p>
-                    
-                    <p style="font-size: 0.85rem; line-height: 1.6; color: #555; margin-bottom: 12px;">
-                        Inspire-se em tons terrosos, vestidos leves e botas. Para completar o estilo, fique à vontade para aderir ao chapéu e entrar no clima.
-                    </p>
-
-                    <p style="font-size: 0.8rem; font-style: italic; color: #777; margin-bottom: 12px; line-height: 1.5;">
-                        Não se preocupe com regras: essa é apenas uma inspiração para quem quiser entrar no nosso clima!
-                    </p>
-
-                    <p style="font-size: 0.85rem; line-height: 1.6; color: var(--navy); font-weight: 400;">
-                        O mais importante é se sentir bem — queremos você confortável, confiante e lindo(a) para celebrar esse momento especial com a gente.
-                    </p>
+                    <p style="font-size: 0.85rem; line-height: 1.6; color: #555; margin-bottom: 12px;">Inspire-se em tons terrosos, vestidos leves e botas. Para completar o estilo, fique à vontade para aderir ao chapéu e entrar no clima.</p>
+                    <p style="font-size: 0.8rem; font-style: italic; color: #777; margin-bottom: 12px; line-height: 1.5;">Não se preocupe com regras: essa é apenas uma inspiração para quem quiser entrar no nosso clima!</p>
                 </div>
             </div>
         </div>
