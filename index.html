@@ -39,7 +39,6 @@
         #presente-overlay {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             z-index: 9999; display: flex; flex-direction: column;
-            background-color: var(--cream);
         }
 
         .box-part {
@@ -49,46 +48,40 @@
             width: 100%;
         }
 
-        /* --- 📏 O RISCO DO MEIO (DE VOLTA) --- */
-        .box-top { border-bottom: 1px solid rgba(0,0,0,0.06); }
-        .box-bottom { border-top: 1px solid rgba(0,0,0,0.06); }
+        /* O vinco do meio (risco) */
+        .box-top { border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .box-bottom { border-top: 1px solid rgba(0,0,0,0.05); }
 
-        /* --- ✨ SELO ESTABILIZADO E LIMPADO --- */
+        /* --- ✨ SELO CENTRALIZADO --- */
         .seal-btn {
             position: absolute; 
             top: 47% !important; 
             left: 50% !important; 
-            transform: translate(-50%, -50%) translateZ(0) !important;
+            transform: translate(-50%, -50%) !important;
             width: 48vw !important; 
             max-width: 380px !important; 
             z-index: 10000; 
             cursor: pointer;
             display: flex; align-items: center; justify-content: center;
             animation: pulse 3s infinite ease-in-out;
-            background: transparent !important; border: none; outline: none;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            will-change: transform;
+            background: none; border: none; outline: none;
         }
 
         .seal-btn img {
             width: 100%; height: auto; display: block;
-            filter: drop-shadow(0 10px 25px rgba(0,0,0,0.12));
-            clip-path: inset(1px);
-            -webkit-clip-path: inset(1px);
-            image-rendering: -webkit-optimize-contrast;
+            filter: drop-shadow(0 10px 25px rgba(0,0,0,0.15));
         }
 
         @keyframes pulse { 
-            0%, 100% { transform: translate(-50%, -50%) scale(1) translateZ(0); }
-            50% { transform: translate(-50%, -50%) scale(1.03) translateZ(0); }
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.03); }
         }
 
         .opened .box-top { transform: translateY(-100%); }
         .opened .box-bottom { transform: translateY(100%); }
         .opened .seal-btn { opacity: 0; pointer-events: none; transition: opacity 0.5s; }
 
-        /* --- 📜 SITE COMPLETO (TUDO MANTIDO) --- */
+        /* --- 📜 SITE COMPLETO --- */
         #site-content {
             min-height: 100vh; width: 100%; display: none;
         }
@@ -186,7 +179,7 @@
             <div class="reveal">
                 <h2>Nossa Jornada</h2>
                 <p style="line-height: 1.9; color: #555; font-weight: 300; max-width: 600px; margin: 0 auto; text-align: justify;">
-                  Aliane e Felipe têm daquelas histórias que parecem escritas com propósito. Tudo começou em 2016, em meio ao brilho das luzes e à energia de um rodeio. Em meio à multidão, olhares se cruzaram sem que eles soubessem que aquele instante simples guardava algo muito maior. A vida seguiu, cada um com seu caminho… mas o destino, com sua forma bonita de agir, tratou de uni-los novamente alguns meses depois — e dessa vez, foi diferente. Foi definitivo. Foi lar. Desde então, nunca mais se soltaram. Juntos, construíram muito mais do que momentos: construíram uma vida. Entre sonhos, desafios e até preconceitos, eles aprenderam que o amor verdadeiro não é aquele que não enfrenta dificuldades, mas o que permanece firme apesar delas. Sempre lado a lado, sempre um pelo outro. Em 2021, o amor ganhou uma nova forma — ainda mais pura e intensa. Deus os abençoou com a chegada de uma criança linda, trazendo ainda mais sentido, alegria e propósito à história que já era tão especial. E agora, em 2026, depois de 10 anos de caminhada, cumplicidade e amor, eles celebram não apenas um casamento… mas a confirmação de tudo o que viveram até aqui. Celebram a escolha diária, a parceria inabalável e o amor que resistiu, cresceu e floresceu. Porque algumas histórias não são apenas encontros. São planos de Deus. 🤍
+                  Aliane e Felipe têm daquelas histórias que parecem escritas com propósito. Tudo começou em 2016, em meio ao brilho das luzes e à energia de um rodeio. Em meio à multidão, olhares se cruzaram sem que eles soubessem que aquele instante simples guardava algo muito maior. A vida seguiu, cada um com seu caminho… mas o destino, com sua forma bonita de agir, tratou de uni-los novamente alguns meses depois — e dessa vez, foi diferente. Foi definitivo. Foi lar. Desde então, nunca mais se soltaram. Juntos, construíram muito mais do que momentos: construíram uma vida. Entre sonhos, desafios e até preconceitos, eles aprenderam que o amor verdadeiro não é aquele que não enfrenta dificuldades, mas o que permanece firme apesar delas. Sempre lado a lado, sempres um pelo outro. Em 2021, o amor ganhou uma nova forma — ainda mais pura e intensa. Deus os abençoou com a chegada de uma criança linda, trazendo ainda mais sentido, alegria e propósito à história que já era tão especial. E agora, em 2026, depois de 10 anos de caminhada, cumplicidade e amor, eles celebram não apenas um casamento… mas a confirmação de tudo o que viveram até aqui. Celebram a escolha diária, a parceria inabalável e o amor que resistiu, cresceu e floresceu. Porque algumas histórias não são apenas encontros. São planos de Deus. 🤍
                 </p>
             </div>
         </div>
@@ -203,9 +196,20 @@
 
                 <div style="margin-top: 30px; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 20px;">
                     <h3 style="font-family: 'Cinzel'; font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 15px; color: var(--navy);">Dress Code Sugerido</h3>
+                    
                     <p style="font-weight: 600; color: var(--gold); margin-bottom: 10px;">Traje: Esporte fino 🤎</p>
-                    <p style="font-size: 0.85rem; line-height: 1.6; color: #555; margin-bottom: 12px;">Inspire-se em tons terrosos, vestidos leves e botas. Para completar o estilo, fique à vontade para aderir ao chapéu e entrar no clima.</p>
-                    <p style="font-size: 0.8rem; font-style: italic; color: #777; margin-bottom: 12px; line-height: 1.5;">Não se preocupe com regras: essa é apenas uma inspiração para quem quiser entrar no nosso clima!</p>
+                    
+                    <p style="font-size: 0.85rem; line-height: 1.6; color: #555; margin-bottom: 12px;">
+                        Inspire-se em tons terrosos, vestidos leves e botas. Para completar o estilo, fique à vontade para aderir ao chapéu e entrar no clima.
+                    </p>
+
+                    <p style="font-size: 0.8rem; font-style: italic; color: #777; margin-bottom: 12px; line-height: 1.5;">
+                        Não se preocupe com regras: essa é apenas uma inspiração para quem quiser entrar no nosso clima!
+                    </p>
+
+                    <p style="font-size: 0.85rem; line-height: 1.6; color: var(--navy); font-weight: 400;">
+                        O mais importante é se sentir bem — queremos você confortável, confiante e lindo(a) para celebrar esse momento especial com a gente.
+                    </p>
                 </div>
             </div>
         </div>
