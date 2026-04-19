@@ -50,12 +50,12 @@
         .box-top { border-bottom: 1px solid rgba(0,0,0,0.05); }
         .box-bottom { border-top: 1px solid rgba(0,0,0,0.05); }
 
-        /* --- ✨ SELO ESTABILIZADO (ESTRUTURA MANTIDA) --- */
+        /* --- ✨ SELO ESTABILIZADO (LIMPEZA DE ARTEFATOS) --- */
         .seal-btn {
             position: absolute; 
-            top: 44% !important; 
+            top: 47% !important; 
             left: 50% !important; 
-            /* translateZ(0) força o uso da GPU para limpar a imagem */
+            /* translateZ(0) aciona a GPU para remover a 'poeira' escura */
             transform: translate(-50%, -50%) translateZ(0) !important;
             width: 48vw !important; 
             max-width: 380px !important; 
@@ -65,7 +65,7 @@
             animation: pulse 3s infinite ease-in-out;
             background: none; border: none; outline: none;
 
-            /* Prevenção de flicker (poeira visual) */
+            /* Estabilização de renderização */
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
             will-change: transform;
@@ -73,8 +73,7 @@
 
         .seal-btn img {
             width: 100%; height: auto; display: block;
-            /* Sombra suavizada para evitar bordas 'sujas' */
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.12));
+            filter: drop-shadow(0 10px 25px rgba(0,0,0,0.15));
         }
 
         @keyframes pulse { 
@@ -86,7 +85,7 @@
         .opened .box-bottom { transform: translateY(100%); }
         .opened .seal-btn { opacity: 0; pointer-events: none; transition: opacity 0.5s; }
 
-        /* --- 📜 SITE COMPLETO (INTEGRALMENTE MANTIDO) --- */
+        /* --- 📜 SITE COMPLETO --- */
         #site-content {
             min-height: 100vh; width: 100%; display: none;
         }
