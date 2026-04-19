@@ -18,9 +18,9 @@
         
         body, html {
             height: 100%;
+            width: 100%;
             font-family: 'Montserrat', sans-serif;
             background-color: var(--cream);
-            color: var(--navy);
             overflow: hidden; 
         }
 
@@ -28,26 +28,36 @@
 
         /* --- 🎁 EMBALAGEM DE LUXO --- */
         #presente-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 9999; display: flex; flex-direction: column;
+            position: fixed; 
+            top: 0; left: 0; 
+            width: 100vw; height: 100vh;
+            z-index: 9999; 
+            display: flex; 
+            flex-direction: column;
         }
 
         .box-part {
-            flex: 1; background: var(--cream);
+            flex: 1; 
+            background: var(--cream);
             background-image: url('https://www.transparenttextures.com/patterns/paper.png');
             transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+            width: 100%;
         }
         .box-top { border-bottom: 1px solid rgba(0,0,0,0.05); }
         .box-bottom { border-top: 1px solid rgba(0,0,0,0.05); }
 
-        /* --- ✨ SELO GIGANTE E CENTRALIZADO (AJUSTADO) --- */
+        /* --- ✨ SELO SUPER GIGANTE E CENTRALIZADO --- */
         .seal-btn {
             position: absolute; 
-            top: 50%; 
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 90%; /* Ocupa quase a largura toda do celular */
-            max-width: 500px; /* Limite para telas grandes */
+            /* Centralização Absoluta */
+            top: 50% !important; 
+            left: 50% !important;
+            transform: translate(-50%, -50%) !important;
+            
+            /* Tamanho agressivo para Mobile */
+            width: 95vw !important; 
+            max-width: 600px !important; 
+            
             z-index: 10000; 
             cursor: pointer;
             display: flex; 
@@ -56,41 +66,43 @@
             animation: pulse 3s infinite ease-in-out;
             background: none;
             border: none;
+            outline: none;
         }
 
         .seal-btn img {
             width: 100%;
             height: auto;
             display: block;
-            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.2));
+            /* Sombra para dar profundidade no papel */
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));
         }
 
         @keyframes pulse { 
             0%, 100% { transform: translate(-50%, -50%) scale(1); }
-            50% { transform: translate(-50%, -50%) scale(1.03); }
+            50% { transform: translate(-50%, -50%) scale(1.05); }
         }
 
         .opened .box-top { transform: translateY(-100%); }
         .opened .box-bottom { transform: translateY(100%); }
-        .opened .seal-btn { opacity: 0; pointer-events: none; transition: 0.5s; }
+        .opened .seal-btn { opacity: 0; pointer-events: none; transition: opacity 0.5s; }
 
-        /* --- 📜 SITE COMPLETO --- */
+        /* --- 📜 SITE COMPLETO (SÓ APARECE DEPOIS) --- */
         #site-content {
-            min-height: 100vh; width: 100%;
+            min-height: 100vh; 
+            width: 100%;
             display: none;
         }
 
         .hero {
             height: 100vh; width: 100%;
             background-color: var(--navy); 
-            background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('https://i.ibb.co/g17P1tz/bfff2db2-0132-4f03-b906-b95ef0ec8fe5.jpg');
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://i.ibb.co/g17P1tz/bfff2db2-0132-4f03-b906-b95ef0ec8fe5.jpg');
             background-size: cover; 
-            background-position: center center; 
+            background-position: center; 
             display: flex; align-items: center; justify-content: center; text-align: center; color: white;
         }
         
-        .hero h1 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: white; }
-        .btn { display: inline-block; padding: 18px 45px; border-radius: 45px; text-decoration: none; font-weight: 600; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; margin-top: 15px; background: var(--gold); color: white; }
+        .hero h1 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; }
 
     </style>
 </head>
@@ -102,7 +114,7 @@
 
     <div id="presente-overlay">
         <div class="seal-btn" onclick="abrirConvite()">
-            <img src="selo.PNG" alt="Selo de Casamento">
+            <img src="image.png" alt="Selo de Casamento">
         </div>
         <div class="box-part box-top"></div>
         <div class="box-part box-bottom"></div>
@@ -111,27 +123,36 @@
     <div id="site-content">
         <div class="hero">
             <div>
-                <span style="text-transform: uppercase; letter-spacing: 4px; font-size: 0.65rem;">Convidamos você para o casamento de</span>
+                <span style="text-transform: uppercase; letter-spacing: 4px; font-size: 0.7rem;">Convidamos você para o casamento de</span>
                 <h1>Aliane & Luis Felipe</h1>
-                <p style="font-family: 'Cinzel', serif; font-size: 0.8rem; margin-top: 20px;">"Nós amamos porque Ele nos amou primeiro". João 4:19</p>
+                <p style="font-family: 'Cinzel', serif; margin-top: 20px;">"Nós amamos porque Ele nos amou primeiro".</p>
             </div>
         </div>
-        <div style="padding: 100px 20px; text-align: center; background: white;">
-            <h2 style="font-family: 'Cinzel';">Confirmar Presença</h2>
-            <a href="https://wa.me/5519993405480" class="btn">Confirmar via WhatsApp</a>
+        
+        <div style="padding: 80px 20px; text-align: center; background: white;">
+            <a href="https://wa.me/5519993405480" 
+               style="background: var(--gold); color: white; padding: 20px 40px; text-decoration: none; border-radius: 50px; font-weight: bold; display: inline-block;">
+               CONFIRMAR PRESENÇA
+            </a>
         </div>
     </div>
 
     <script>
         function abrirConvite() {
             const audio = document.getElementById('invite-music');
-            audio.play().catch(e => console.log("Erro no áudio"));
+            audio.play().catch(e => console.log("Som ativado"));
             
             document.getElementById('presente-overlay').classList.add('opened');
             document.getElementById('site-content').style.display = 'block';
 
-            setTimeout(() => { document.body.classList.remove('locked'); }, 600);
-            setTimeout(() => { document.getElementById('presente-overlay').style.display = 'none'; }, 1200);
+            setTimeout(() => { 
+                document.body.classList.remove('locked'); 
+                document.body.classList.add('unlocked');
+            }, 600);
+            
+            setTimeout(() => { 
+                document.getElementById('presente-overlay').style.display = 'none'; 
+            }, 1200);
         }
     </script>
 </body>
