@@ -48,16 +48,13 @@
             width: 100%;
         }
 
-        /* O vinco do meio (risco) */
         .box-top { border-bottom: 1px solid rgba(0,0,0,0.05); }
         .box-bottom { border-top: 1px solid rgba(0,0,0,0.05); }
 
-        /* --- ✨ SELO ESTABILIZADO (FIX FINAL DO PIXEL) --- */
         .seal-btn {
             position: absolute; 
             top: 47% !important; 
             left: 50% !important; 
-            /* translate3d força o uso total da GPU para renderizar as bordas limpas */
             transform: translate3d(-50%, -50%, 0) !important;
             width: 48vw !important; 
             max-width: 380px !important; 
@@ -66,7 +63,6 @@
             display: flex; align-items: center; justify-content: center;
             animation: pulse 3s infinite ease-in-out;
             background: none; border: none; outline: none;
-            
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
         }
@@ -74,7 +70,6 @@
         .seal-btn img {
             width: 100%; height: auto; display: block;
             filter: drop-shadow(0 10px 25px rgba(0,0,0,0.15));
-            /* Truque de mestre: outline transparente 'engana' o navegador para suavizar a borda externa */
             outline: 1px solid transparent;
             -webkit-transform: translateZ(0);
             transform: translateZ(0);
@@ -153,9 +148,37 @@
             font-size: 0.75rem; font-weight: 600; transition: 0.3s;
         }
 
-        .btn { display: inline-block; padding: 18px 45px; border-radius: 45px; text-decoration: none; font-weight: 600; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; margin-top: 15px; }
+        .btn { display: inline-block; padding: 18px 45px; border-radius: 45px; text-decoration: none; font-weight: 600; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; margin-top: 15px; cursor: pointer; border: none; }
         .btn-gold { background: var(--gold); color: white; }
         .btn-outline { border: 2px solid var(--gold); color: var(--gold); }
+
+        /* --- 🎨 NOVA JANELINHA (MODAL) --- */
+        .modal-overlay {
+            display: none;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(10, 25, 47, 0.85); /* Navy com transparência */
+            backdrop-filter: blur(8px);
+            z-index: 10001; align-items: center; justify-content: center;
+        }
+        .modal-box {
+            background: var(--cream);
+            padding: 35px 25px; border-radius: 25px;
+            width: 90%; max-width: 380px; text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            border: 1px solid var(--gold);
+            position: relative;
+        }
+        .modal-box h3 { font-family: 'Cinzel', serif; font-size: 1.2rem; color: var(--navy); margin-bottom: 15px; }
+        .modal-box input {
+            width: 100%; padding: 15px; border-radius: 10px; border: 1px solid #ddd;
+            margin-bottom: 20px; font-family: 'Montserrat', sans-serif; outline: none;
+            font-size: 1rem; text-align: center;
+        }
+        .modal-box input:focus { border-color: var(--gold); }
+        .close-modal {
+            position: absolute; top: 15px; right: 20px; font-size: 1.5rem;
+            color: var(--navy); cursor: pointer;
+        }
 
     </style>
 </head>
@@ -171,6 +194,16 @@
         </div>
         <div class="box-part box-top"></div>
         <div class="box-part box-bottom"></div>
+    </div>
+
+    <div id="modal-confirmacao" class="modal-overlay">
+        <div class="modal-box">
+            <span class="close-modal" onclick="fecharModal()">&times;</span>
+            <h3>Confirmar Presença</h3>
+            <p style="font-size: 0.8rem; margin-bottom: 15px;">Para confirmar, digite seu nome completo:</p>
+            <input type="text" id="nome-convidado" placeholder="Seu nome aqui...">
+            <button onclick="enviarWhatsApp()" class="btn btn-gold" style="width: 100%;">Confirmar e Enviar</button>
+        </div>
     </div>
 
     <div id="site-content">
@@ -200,23 +233,13 @@
                 <hr style="width: 50px; margin: 20px auto; border: 0.5px solid #ddd;">
                 <p style="font-weight: 600;">ENDEREÇO</p>
                 <p style="font-size: 0.85rem; color: #555;">Buffet Pachecos</p>
-                <a href="https://maps.app.goo.gl/GEeXJcZZupW75tr29?g_st=ic" target="_blank" class="btn btn-outline">📍 Ver localização</a>
+                <a href="https://www.google.com/maps" target="_blank" class="btn btn-outline">📍 Ver localização</a>
 
                 <div style="margin-top: 30px; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 20px;">
                     <h3 style="font-family: 'Cinzel'; font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 15px; color: var(--navy);">Dress Code Sugerido</h3>
-                    
                     <p style="font-weight: 600; color: var(--gold); margin-bottom: 10px;">Traje: Esporte fino 🤎</p>
-                    
                     <p style="font-size: 0.85rem; line-height: 1.6; color: #555; margin-bottom: 12px;">
                         Inspire-se em tons terrosos, vestidos leves e botas. Para completar o estilo, fique à vontade para aderir ao chapéu e entrar no clima.
-                    </p>
-
-                    <p style="font-size: 0.8rem; font-style: italic; color: #777; margin-bottom: 12px; line-height: 1.5;">
-                        Não se preocupe com regras: essa é apenas uma inspiração para quem quiser entrar no nosso clima!
-                    </p>
-
-                    <p style="font-size: 0.85rem; line-height: 1.6; color: var(--navy); font-weight: 400;">
-                        O mais importante é se sentir bem — queremos você confortável, confiante e lindo(a) para celebrar esse momento especial com a gente.
                     </p>
                 </div>
             </div>
@@ -226,7 +249,7 @@
             <div class="reveal">
                 <h2>Sua Presença</h2>
                 <p style="margin-bottom: 20px; color: #555;">Por favor, confirme sua presença pelo WhatsApp.</p>
-                <a href="https://wa.me/551981470614" class="btn btn-gold">Confirmar via WhatsApp</a>
+                <button onclick="abrirModal()" class="btn btn-gold">Confirmar via WhatsApp</button>
             </div>
 
             <div class="grid-buttons reveal">
@@ -259,6 +282,27 @@
                 });
             }, { threshold: 0.1 });
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        }
+
+        // --- LÓGICA DA JANELINHA ---
+        function abrirModal() {
+            document.getElementById('modal-confirmacao').style.display = 'flex';
+        }
+
+        function fecharModal() {
+            document.getElementById('modal-confirmacao').style.display = 'none';
+        }
+
+        function enviarWhatsApp() {
+            const nome = document.getElementById('nome-convidado').value;
+            if (!nome) {
+                alert("Por favor, digite seu nome completo.");
+                return;
+            }
+            const numero = "551981470614";
+            const mensagem = encodeURIComponent(`Olá! Gostaria de confirmar minha presença no casamento. Meu nome é: ${nome}`);
+            window.open(`https://wa.me/${numero}?text=${mensagem}`, '_blank');
+            fecharModal();
         }
     </script>
 </body>
